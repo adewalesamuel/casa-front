@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Link } from "react-router-dom"
+import logo from './assets/logo.jpeg';
+import * as Icons from 'react-feather';
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <BrowserRouter>
+            <div className='container-fluid'>
+                <section id="mainHeader">
+                    <div className="container">
+                        <nav className="navbar navbar-expand-lg navbar-light bg-white 
+                        justify-content-between d-flex flex-row flex-no-wrap">
+                            <Link className="navbar-brand">
+                                <img src={logo} className="site-logo" /> 
+                            </Link>
+                            <div>
+                                <ul className="list-unstyled d-flex mr-auto">
+                                    <li className="mx-1">
+                                        <Link className="nav-link p-2" to={'/'}>
+                                            <Icons.Home style={{
+                                                width:'20px', 
+                                                height:'20px', 
+                                                marginRight: '5px'}}/>
+                                            <span>Accueil</span>
+                                        </Link>
+                                    </li>
+                                    <li className="mx-1">
+                                        <Link className="nav-link p-2" to={'/'}>
+                                            <Icons.BookOpen style={{
+                                                width:'20px', 
+                                                height:'20px', 
+                                                marginRight: '5px'}}/>
+                                            <span>Category</span>
+                                        </Link>
+                                    </li>
+                                    <li className="mx-1">
+                                        <Link className="nav-link p-2" to={'/'}>
+                                            <Icons.Heart style={{
+                                                width:'20px', 
+                                                height:'20px', 
+                                                marginRight: '5px'}}/>
+                                            <span>Favoris</span>
+                                        </Link>
+                                    </li>
+                                    <li className="mx-1">
+                                        <Link className="nav-link p-2" to={'/connexion'}>
+                                            <Icons.User style={{
+                                                width:'20px', 
+                                                height:'20px', 
+                                                marginRight: '5px'}}/>
+                                            <span className="d-inline-block">Connexion</span>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </section>               
+            </div>
+            
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        </BrowserRouter>
+)
 }
 
 export default App
