@@ -1,6 +1,6 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Services } from '../services';
 import { Components } from '../components';
 import { Utils } from '../utils';
@@ -8,60 +8,42 @@ import { Utils } from '../utils';
 export function CategoryListView() {
     let abortController = new AbortController();
 
-    const { CategoryService } = Services;
-
-    const tableAttributes = {
-        'nom': {},
-		'slug': {},
-		'description': {},
-		'icon_img_url': {},
-		'display_img_url': {},
-		'quantite': {},
-		'category_id': {},
-		
-    }
-    const tableActions = ['edit', 'delete'];
+    const { CategoryService, ProductService } = Services;
     
     const navigate = useNavigate();
+    const [searchParam] = useSearchParams();
 
-    const [categorys, setCategorys] = useState([]);
-    const [page, ] = useState(1);
+    const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [page, setPage] = useState(1);
     const [, setPageLength] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleEditClick = (e, data) => {
-        e.preventDefault();
-        navigate(`/categorys/${data.id}/edit`);
-    }
-    const handleDeleteClick = async (e, category) => {
-        e.preventDefault();
+    const loadProductList = async (page) => {
+        try {
+            const {products} = await ProductService.loadProductList(
+                page, searchParam.get('category'), abortController.signal);
 
-        if (confirm('Voulez vous vraiment supprimer ce category')) {
-            const categorysCopy = [...categorys];
-            const index = categorysCopy.findIndex(categoryItem => 
-                categoryItem.id === category.id);
-
-            categorysCopy.splice(index, 1);
-            setCategorys(categorysCopy);
-
-            await CategoryService.destroy(category.id, 
-                abortController.signal);
+            setProducts(products.data);
+            setPageLength(products.last_page);
+            setPage(page + 1);
+        } catch(error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
     const init = useCallback(async () => {
         try {
-            const {categorys} = await CategoryService.getAll(
-                {page: page}, abortController.signal);
+            const {categories} = await CategoryService.getAll(
+                {}, abortController.signal);
 
-            setCategorys(categorys.data);
-            setPageLength(categorys.last_page);
+            setCategories(categories);
         } catch (error) {
             console.log(error);
-        } finally {
-            setIsLoading(false);
         }
-    }, [page]);
+    }, []);
 
     useEffect(() => {
         init();
@@ -72,17 +54,50 @@ export function CategoryListView() {
         }
     }, [init])
 
+    useEffect(() => {
+        setIsLoading(true);
+        setPage(1)
+        loadProductList(1);
+
+        return () => {
+            abortController.abort();
+            abortController = new AbortController();
+        }
+    }, [searchParam.get('category')])
+
     return (
-        <>
-            <h6>Liste Categorys</h6>
+        <section id="category">
+            <div className="">
+                <ul className="row list-unstyled py-3 pb-4 m-0 text-nowrap 
+                mw-100 overflow-auto justify-content-left flex-nowrap">
+                    {categories.map((categorie, index) => {
+                        const isCurrentCaterory = (searchParam.get('category') && 
+                                                    searchParam.get('category') === categorie.slug);
+                        return (
+                                <li className="px-md-2 px-1" key={index}>
+                                    <Link className="btn btn-info" 
+                                    to={`/categories?category=${categorie.slug}`} 
+                                    style={{opacity: `${isCurrentCaterory ? 1 : 0.6}`}}>
+                                        {categorie?.nom ?? '---'}
+                                    </Link>
+                                </li>
+                            )
+                    })}
+                </ul>
+            </div>
             <Components.Loader isLoading={isLoading}>
-                <Link className='btn btn-info' to='/categorys/create'>
-                    <i className='icon ion-plus'></i> Créer category
-                </Link>
-                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                tableAttributes={tableAttributes} tableActions={tableActions} 
-                tableData={categorys}/>
+                <div className="py-3">
+                    <ul className="list-unstyled mb-0 row">
+                        {products.map((product, index) => {
+                            return (
+                                    <li className="col-lg-6 col-12 px-md-2 px-0 pb-3" key={index}>
+                                        <Components.ProductCardH product={product} />
+                                    </li>
+                                )
+                        })}
+                    </ul>
+                </div>
             </Components.Loader>
-        </>
+        </section>
     )
 }

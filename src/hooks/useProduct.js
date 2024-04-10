@@ -14,7 +14,9 @@ export const useProduct = () => {
 	const [category_id, setCategory_id] = useState('');
 	const [municipality_id, setMunicipality_id] = useState('');
 	const [user_id, setUser_id] = useState('');
-	
+	const [municipality, setMunicipality] = useState({});
+	const [category, setCategory] = useState({});
+
     const [errors, setErrors] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
 
@@ -82,6 +84,9 @@ export const useProduct = () => {
 		setCategory_id(product.category_id ?? '');
 		setMunicipality_id(product.municipality_id ?? '');
 		setUser_id(product.user_id ?? '');
+
+		setCategory(product.category ?? '');
+		setMunicipality(product.municipality ?? '');
 		
     }
     const emptyProduct = () => {
@@ -97,6 +102,9 @@ export const useProduct = () => {
 		setCategory_id('');
 		setMunicipality_id('');
 		setUser_id('');
+
+		setCategory('');
+		setMunicipality('');
 		
     }
 
@@ -113,6 +121,9 @@ export const useProduct = () => {
 		category_id,
 		municipality_id,
 		user_id,
+
+		municipality,
+		category,
 		
         errors,
         isDisabled,
@@ -136,6 +147,6 @@ export const useProduct = () => {
         updateProduct,
         deleteProduct,
         fillProduct,
-        emptyProduct
+        emptyProduct,
     };
 }

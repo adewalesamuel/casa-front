@@ -5,7 +5,7 @@ import logo from '../assets/logo.jpeg';
 export function MainMenu() {
 	return (
 			<nav className="navbar navbar-expand-lg navbar-light">
-                <Link className="navbar-brand">
+                <Link className="navbar-brand" to='/'>
                     <img src={logo} className="site-logo" /> 
                 </Link>
                 <div className="collapse navbar-collapse">
@@ -16,7 +16,7 @@ export function MainMenu() {
                             </Link>
                         </li>
                         <li className="mx-1">
-                            <Link className="nav-link p-2 text-white" to={'/'}>
+                            <Link className="nav-link p-2 text-white" to={'/categories?category=all'}>
                                 <span>Categories</span>
                             </Link>
                         </li>

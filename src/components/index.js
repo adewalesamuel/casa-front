@@ -16,6 +16,12 @@ import { Header } from './Header';
 import { HeroSection } from './HeroSection';
 import { MainMenu } from './MainMenu';
 import { Footer } from './Footer';
+import { ProductCardH } from './ProductCardH';
+import { ProductCardV } from './ProductCardV';
+import { Loader } from './Loader';
+import { Spinner } from './Spinner';
+import { Pagination } from './Pagination';
+import { ErrorMessages } from './ErrorMessages';
 
 export const Components = {
     PermissionForm,
@@ -35,5 +41,11 @@ export const Components = {
 	Header,
 	HeroSection,
 	MainMenu,
-	Footer
+	Footer,
+	ProductCardH,
+	ProductCardV,
+	Loader,
+	Spinner,
+	Pagination,
+	ErrorMessages
 }
