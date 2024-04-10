@@ -12,6 +12,10 @@ import { FeatureProductForm } from './forms/FeatureProductForm';
 import { CommentForm } from './forms/CommentForm';
 import { FavoriteForm } from './forms/FavoriteForm';
 import { PromoCodeForm } from './forms/PromoCodeForm';
+import { Header } from './Header';
+import { HeroSection } from './HeroSection';
+import { MainMenu } from './MainMenu';
+import { Footer } from './Footer';
 
 export const Components = {
     PermissionForm,
@@ -28,5 +32,8 @@ export const Components = {
 	CommentForm,
 	FavoriteForm,
 	PromoCodeForm,
-	
+	Header,
+	HeroSection,
+	MainMenu,
+	Footer
 }

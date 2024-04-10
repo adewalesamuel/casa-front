@@ -18,6 +18,14 @@ h1, h2, h3, h4, h5, h6, a {
   font-family: Poppins;
 }
 
+#mainHeader {
+  background-color: var(--primary-color);
+  background-position: center;
+  background-size: cover;
+  background-image: url('./assets/img/hero-bg.jpeg');
+  background-repeat: no-repeat;
+}
+
 .site-logo {
   width: 60px;
   height: auto;
