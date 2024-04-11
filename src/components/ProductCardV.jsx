@@ -21,7 +21,7 @@ export function ProductCardV({product}) {
                     text-nowrap" style={{
                         textOverflow:"ellipsis",
                         maxWidth: "100%"
-                    }}>{product?.municipality?.city.nom ?? "---"} - {product?.municipality.nom ?? "---"}</small>
+                    }}>{product?.municipality?.city?.nom ?? "---"} - {product?.municipality?.nom ?? "---"}</small>
                     <div className="d-flex justify-content-center py-1">
                         <div className="col badge badge-primary mr-2">
                         	Category: {product?.category?.nom ?? "---"}
