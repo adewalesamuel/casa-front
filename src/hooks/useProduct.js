@@ -18,6 +18,7 @@ export const useProduct = () => {
 	const [category, setCategory] = useState({});
 	const [features, setFeatures] = useState([]);
 	const [created_at, setCreated_at] = useState('');
+	const [user, setUser] = useState({});
 
     const [errors, setErrors] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -90,7 +91,8 @@ export const useProduct = () => {
 
 		setCategory(product.category ?? {});
 		setMunicipality(product.municipality ?? {});
-		setFeatures(product.features ?? {});
+		setFeatures(product.features ?? []);
+		setUser(product.user ?? {});
 		
     }
     const emptyProduct = () => {
@@ -108,9 +110,10 @@ export const useProduct = () => {
 		setUser_id('');
 		setCreated_at('');
 
-		setCategory('');
-		setMunicipality('');
-		setFeatures('');
+		setCategory({});
+		setMunicipality({});
+		setFeatures([]);
+		setUser({});
 		
     }
 
@@ -132,7 +135,8 @@ export const useProduct = () => {
 		municipality,
 		category,
 		features,
-		
+		user,
+
         errors,
         isDisabled,
         setNom,

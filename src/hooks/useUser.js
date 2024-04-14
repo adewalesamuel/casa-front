@@ -76,7 +76,7 @@ export const useUser = () => {
         };
 
         return Services.UserService.update(
-        	userId, JSON.stringify(payload), signal);
+			userId, JSON.stringify(payload), signal);
     }
     const deleteUser = (userId, signal) => {
         return Services.UserService.destroy(userId, signal);

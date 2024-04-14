@@ -35,7 +35,7 @@ export function HeroSection() {
                      </>
                 }
                 {pathname !== '/' && 
-                    <h3 className="text-uppercase">{pathname.replace('/',' ')}</h3>
+                    <h3 className="text-uppercase text-break">{pathname.replace('/',' ')}</h3>
                 }
             </div>
 		)

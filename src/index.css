@@ -14,7 +14,7 @@ html, body, textarea, input, select {
   Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6, a, button, .btn {
   font-family: Poppins;
 }
 
@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6, a {
   border: none;
 }
 
-.bg-primary, .badge-primary {
+.bg-primary, .badge-primary, .btn-primary {
   background-color: var(--primary-color) !important;
 }
 
@@ -64,6 +64,6 @@ h1, h2, h3, h4, h5, h6, a {
   padding: 10px;
 }
 
-.border-primary {
+.border-primary, .btn-primary {
   border-color: var(--primary-color) !important;
 }

@@ -8,8 +8,8 @@ export function ProductCardV({product}) {
 	return (
 			<article className="card p-2">
                 <Link className="" to={`/publications/${product?.slug ?? ''}`}>
-                    <img className="card-img-top rounded" src={productImg ?? placeholderImg} 
-                    alt={product?.nom ?? ''}/>
+                    <img className="card-img-top rounded img-fluid" src={productImg ?? placeholderImg} 
+                    alt={product?.nom ?? ''} loading='lazy' width={219} height={159}/>
                 </Link>
                 <div className="card-body px-1 py-2">
                     <h5 className="card-title mb-0 text-secondary">

@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Components } from '../components'
 import { Services } from '../services'
+import 'swiper/css';
 
 export function HomeView() {
     let abortController = new AbortController();
@@ -18,10 +20,10 @@ export function HomeView() {
             const {products} = await Services.ProductService
             .loadProductList(page, null, abortController.signal);
 
-            setProductList([...productList, ...products.data]);
+            if (page == 2 && products.data.length === 0)
+                return setProductList([...recentProducts]);
 
-            if (page == 2 && productList.length === 0)
-                setProductList([...recentProducts]);
+            setProductList([...productList, ...products.data]);
         } catch(error) {
             console.log(error);
         } finally {
@@ -63,19 +65,18 @@ export function HomeView() {
                         <h5>Publicaitons récentes</h5>
                         <a href="/" className="btn btn-link text-primary">Voir plus</a>
                     </div>
-                    <div className="col-12">
-                        {isLoadingRecents ?? <Components.Spinner />}
-                        <ul className="list-unstyled mb-0 row">
+                    <Components.Loader isLoading={isLoadingRecents}>
+                        <Swiper slidesPerView={'auto'} spaceBetween={20} 
+                        lazyPreloadPrevNext={2} className="mySwiper">
                             {recentProducts.map((product, index) => {
                                 return (
-                                        <li className="col-lg-3 col-md-4 col-6 px-md-2 
-                                        px-0 pb-3" key={index}>
+                                        <SwiperSlide key={index} style={{maxWidth: '230px'}}>
                                             <Components.ProductCardV product={product}/>
-                                        </li>
+                                        </SwiperSlide>
                                     )
                             })}
-                        </ul>
-                    </div>
+                        </Swiper>
+                    </Components.Loader>
                 </section>  
                 <section className="py-3 mt-4">
                     <h5>Découvrez toutes nos publications</h5>
@@ -90,7 +91,9 @@ export function HomeView() {
                             })}
                         </ul>
                     </div>
-                    {isLoading ?? <Components.Spinner />}
+                    <div className='text-center py-5'>
+                        {isLoading && <Components.Spinner />}
+                    </div>
                 </section>  
 			</section>
 		)
