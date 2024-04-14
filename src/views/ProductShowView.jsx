@@ -5,6 +5,7 @@ import { Hooks } from '../hooks';
 import { Components } from '../components';
 import { Utils } from '../utils';
 import avatarPlaceholder from '../assets/img/avatar-placeholder.webp';
+import placeholderImg from '../assets/img/placeholder.webp';
 
 export function ProductShowView() {
     let abortController = new AbortController();
@@ -12,9 +13,6 @@ export function ProductShowView() {
     const {slug} = useParams();
 
     const useProduct = Hooks.useProduct();
-
-    const userProfileImage = (useProduct.user.profile_img_url 
-        && useProduct.user.profile_img_url !== '');
 
     const [isContactVisible, setIsContactVisible] = useState(false);
 
@@ -42,7 +40,8 @@ export function ProductShowView() {
                 <div className='row'>
                     <div className='col-12 col-lg-7'>
                         <img className='img-fluid w-100 rounded-md' alt={useProduct.nom} loading='lazy'
-                        src={useProduct.display_img_url_list[imageIndex] ?? ''} width={500} height={400}/>
+                        src={useProduct.display_img_url_list[imageIndex] ?? ''} width={500} height={400}
+                        onError={event => event.currentTarget.src = placeholderImg}/>
                         <div className='px-2 px-md-0 mt-O mt-md-2 product-image-list-container'>
                             <div className='card rounded-md'>
                                 <div className='card-body p-xs'>
@@ -121,8 +120,9 @@ export function ProductShowView() {
                         <hr />
                         <div className='row align-items-center'>
                             <div className='px-3'>
-                                <img src={userProfileImage ?? avatarPlaceholder} alt={useProduct.user?.nom} 
+                                <img src={useProduct.user?.profile_img_url ?? ''} alt={useProduct.user?.nom} 
                                 width={70} height={70} className='img-fluid rounded-circle' 
+                                onError={event => event.currentTarget.src = avatarPlaceholder} 
                                 style={{objectFit: 'cover'}}/>
                                 {useProduct.user.nom ?? ""}
                             </div>

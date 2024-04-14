@@ -4,13 +4,12 @@ import placeholderImg from '../assets/img/placeholder.webp';
 
 
 export function ProductCardH({product}) {
-	const productImg = product?.images_url_list[0] ?? null;
-
 	return (
             <article className="card p-2 flex-row">
                 <Link className="col-5 px-0" to={`/publications/${product?.slug ?? ''}`}>
-                    <img className="card-img-top rounded img-fluid" src={productImg ?? placeholderImg} 
-                    alt={product?.nom ?? ''} loading='lazy' width={203} height={153}/>
+                    <img className="card-img-top rounded img-fluid" src={product.images_url_list[0] ?? ''} 
+                    alt={product?.nom ?? ''} loading='lazy' width={219} height={159} 
+                    onError={event => event.currentTarget.src = placeholderImg}/>
                 </Link>
                 <div className="col-7 px-0 pl-3">
                     <h5 className="card-title mb-0 text-secondary">

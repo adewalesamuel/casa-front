@@ -3,13 +3,12 @@ import * as Icons from 'react-feather';
 import placeholderImg from '../assets/img/placeholder.webp';
 
 export function ProductCardV({product}) {
-	const productImg = product?.images_url_list[0] ?? null;
-
 	return (
 			<article className="card p-2">
                 <Link className="" to={`/publications/${product?.slug ?? ''}`}>
-                    <img className="card-img-top rounded img-fluid" src={productImg ?? placeholderImg} 
-                    alt={product?.nom ?? ''} loading='lazy' width={219} height={159}/>
+                    <img className="card-img-top rounded img-fluid" src={product.images_url_list[0] ?? ''} 
+                    alt={product?.nom ?? ''} loading='lazy' width={219} height={159} 
+                    onError={event => event.currentTarget.src = placeholderImg}/>
                 </Link>
                 <div className="card-body px-1 py-2">
                     <h5 className="card-title mb-0 text-secondary">
