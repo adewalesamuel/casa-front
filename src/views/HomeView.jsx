@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import * as Icons from 'react-feather';
 import { Components } from '../components'
 import { Services } from '../services'
 import 'swiper/css';
@@ -12,6 +14,7 @@ export function HomeView() {
     const [page, setPage] = useState(1);
     const [isLoadingRecents, setIsLoadingRecents] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasMore, setHasMore] = useState(true);
 
     const loadProductList = async (page) => {
         setIsLoading(true);
@@ -20,8 +23,14 @@ export function HomeView() {
             const {products} = await Services.ProductService
             .loadProductList(page, null, abortController.signal);
 
-            if (page == 2 && products.data.length === 0)
-                return setProductList([...recentProducts]);
+            if (products.data.length === 0) setHasMore(false);
+
+            if (page == 2 && products.data.length === 0) {
+                setHasMore(false)
+                setProductList([...recentProducts]);
+
+                return;
+            }
 
             setProductList([...productList, ...products.data]);
         } catch(error) {
@@ -63,7 +72,7 @@ export function HomeView() {
 				<section className="py-3">
                     <div className="d-flex align-items-center justify-content-between">
                         <h5>Publicaitons récentes</h5>
-                        <a href="/" className="btn btn-link text-primary">Voir plus</a>
+                        <Link to={'/publications'} className="btn btn-link text-primary">Voir plus</Link>
                     </div>
                     <Components.Loader isLoading={isLoadingRecents}>
                         <Swiper slidesPerView={'auto'} spaceBetween={20} 
@@ -93,6 +102,11 @@ export function HomeView() {
                     </div>
                     <div className='text-center py-5'>
                         {isLoading && <Components.Spinner />}
+                        {(!isLoading && hasMore) &&
+                            <button className='btn btn-info btn-sm' onClick={() => setPage(page + 1)}>
+                                <Icons.PlusCircle /> Charger plus
+                            </button>
+                        }
                     </div>
                 </section>  
 			</section>

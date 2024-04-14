@@ -64,7 +64,7 @@ export function ProductShowView() {
                     <div className='col-12 col-lg-5'>
                         <div className="d-flex py-1 mt-2">
                             <div className="badge badge-primary mr-2 px-4">
-                                Category: {useProduct.category?.nom ?? "---"}
+                                Categorie: {useProduct.category?.nom ?? "---"}
                             </div>
                             <div className="badge badge-outline-primary text-primary px-4">
                                 {useProduct.type ?? "---"}

@@ -23,7 +23,7 @@ export function ProductCardV({product}) {
                     }}>{product?.municipality?.city?.nom ?? "---"} - {product?.municipality?.nom ?? "---"}</small>
                     <div className="d-flex justify-content-center py-1">
                         <div className="col badge badge-primary mr-2">
-                        	Category: {product?.category?.nom ?? "---"}
+                        	Categorie: {product?.category?.nom ?? "---"}
                         </div>
                         <div className="col badge badge-outline-primary text-primary">
                             {product?.type ?? "---"}

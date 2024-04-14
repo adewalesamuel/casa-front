@@ -2,6 +2,7 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import * as Icons from 'react-feather';
 import { Services } from '../services';
 import { Components } from '../components';
 
@@ -13,19 +14,22 @@ export function CategoryListView() {
     const [searchParam] = useSearchParams();
 
     const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
-    const [, setPage] = useState(1);
-    const [, setPageLength] = useState(1);
+    const [productList, setProductList] = useState([]);
+    const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasMore, setHasMore] = useState(true);
 
     const loadProductList = async (page) => {
+        setIsLoading(true);
+
         try {
             const {products} = await ProductService.loadProductList(
                 page, searchParam.get('category'), abortController.signal);
+            
+            if (products.data.length === 0) setHasMore(false);
+            if (page === 1) return setProductList([...products.data]);
 
-            setProducts(products.data);
-            setPageLength(products.last_page);
-            setPage(page + 1);
+            setProductList([...productList, ...products.data]);
         } catch(error) {
             console.log(error);
         } finally {
@@ -55,6 +59,7 @@ export function CategoryListView() {
 
     useEffect(() => {
         setIsLoading(true);
+        setHasMore(true);
         setPage(1)
         loadProductList(1);
 
@@ -63,6 +68,11 @@ export function CategoryListView() {
             abortController = new AbortController();
         }
     }, [searchParam.get('category')])
+
+    useEffect(() => {
+        if (page === 1) return;
+        loadProductList(page);
+    }, [page]);
 
     return (
         <section id="category">
@@ -84,19 +94,25 @@ export function CategoryListView() {
                     })}
                 </ul>
             </div>
-            <Components.Loader isLoading={isLoading}>
-                <div className="py-3">
-                    <ul className="list-unstyled mb-0 row">
-                        {products.map((product, index) => {
-                            return (
-                                    <li className="col-lg-6 col-12 px-md-2 px-0 pb-3" key={index}>
-                                        <Components.ProductCardH product={product} />
-                                    </li>
-                                )
-                        })}
-                    </ul>
+            <div className="py-3">
+                <ul className="list-unstyled mb-0 row">
+                    {productList.map((product, index) => {
+                        return (
+                                <li className="col-lg-6 col-12 px-md-2 px-0 pb-3" key={index}>
+                                    <Components.ProductCardH product={product} />
+                                </li>
+                            )
+                    })}
+                </ul>
+                <div className='text-center py-5'>
+                    {isLoading && <Components.Spinner />}
+                    {(!isLoading && hasMore) &&
+                        <button className='btn btn-info btn-sm' onClick={() => setPage(page + 1)}>
+                            <Icons.PlusCircle /> Charger plus
+                        </button>
+                    }
                 </div>
-            </Components.Loader>
+            </div>
         </section>
     )
 }

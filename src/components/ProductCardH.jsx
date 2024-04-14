@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import * as Icons from 'react-feather';
 import placeholderImg from '../assets/img/placeholder.webp';
 
-
 export function ProductCardH({product}) {
 	return (
             <article className="card p-2 flex-row">

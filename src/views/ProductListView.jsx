@@ -1,71 +1,49 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { Services } from '../services';
 import { Components } from '../components';
-import { Utils } from '../utils';
+import * as Icons from 'react-feather';
 
 export function ProductListView() {
     let abortController = new AbortController();
 
     const { ProductService } = Services;
 
-    const tableAttributes = {
-        'nom': {},
-		'slug': {},
-		'description': {},
-		'prix': {},
-		'type_paiement': {},
-		'type': {},
-		'display_img_url_list': {},
-		'images_url_list': {},
-		'category_id': {},
-		'municipality_id': {},
-		'user_id': {},
-		
-    }
-    const tableActions = ['edit', 'delete'];
-    
-    const navigate = useNavigate();
-
-    const [products, setProducts] = useState([]);
-    const [page, ] = useState(1);
-    const [, setPageLength] = useState(1);
+    const [productList, setProductList] = useState([]);
+    const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasMore, setHasMore] = useState(true);
 
-    const handleEditClick = (e, data) => {
-        e.preventDefault();
-        navigate(`/products/${data.id}/edit`);
-    }
-    const handleDeleteClick = async (e, product) => {
-        e.preventDefault();
+    const loadProductList = async (page) => {
+        setIsLoading(true);
+        
+        try {
+            const {products} = await Services.ProductService
+            .loadProductList(page, null, abortController.signal);
 
-        if (confirm('Voulez vous vraiment supprimer ce product')) {
-            const productsCopy = [...products];
-            const index = productsCopy.findIndex(productItem => 
-                productItem.id === product.id);
+            if (products.data.length === 0) setHasMore(false);
+            if (page === 1) return setProductList([...products.data]);
 
-            productsCopy.splice(index, 1);
-            setProducts(productsCopy);
-
-            await ProductService.destroy(product.id, 
-                abortController.signal);
+            setProductList([...productList, ...products.data]);
+        } catch(error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
     const init = useCallback(async () => {
         try {
             const {products} = await ProductService.getAll(
-                {page: page}, abortController.signal);
+                {page: 1}, abortController.signal);
 
-            setProducts(products.data);
-            setPageLength(products.last_page);
+            setProductList(products.data);
         } catch (error) {
             console.log(error);
         } finally {
             setIsLoading(false);
         }
-    }, [page]);
+    }, []);
 
     useEffect(() => {
         init();
@@ -76,17 +54,31 @@ export function ProductListView() {
         }
     }, [init])
 
+    useEffect(() => {
+        loadProductList(page)
+    }, [page]);
+
     return (
-        <>
-            <h6>Liste Products</h6>
-            <Components.Loader isLoading={isLoading}>
-                <Link className='btn btn-info' to='/products/create'>
-                    <i className='icon ion-plus'></i> Créer product
-                </Link>
-                <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
-                tableAttributes={tableAttributes} tableActions={tableActions} 
-                tableData={products}/>
-            </Components.Loader>
-        </>
+        <section id="productList">
+            <div className="col-12">
+                    <ul className="list-unstyled mb-0 row">
+                        {productList.map((product, index) => {
+                            return (
+                                    <li className="col-lg-6 col-12 px-md-2 px-0 pb-3" key={index}>
+                                        <Components.ProductCardH product={product} />
+                                    </li>
+                                )
+                        })}
+                    </ul>
+                </div>
+                <div className='text-center py-5'>
+                    {isLoading && <Components.Spinner />}
+                    {(!isLoading && hasMore) &&
+                        <button className='btn btn-info btn-sm' onClick={() => setPage(page + 1)}>
+                            <Icons.PlusCircle /> Charger plus
+                        </button>
+                    }
+                </div>
+        </section>
     )
 }
