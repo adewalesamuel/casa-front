@@ -58,7 +58,7 @@ export function HomeView() {
 
 	return (
 			<section id="home">
-				 <section className="py-3">
+				<section className="py-3">
                     <div className="d-flex align-items-center justify-content-between">
                         <h5>Publicaitons récentes</h5>
                         <a href="/" className="btn btn-link text-primary">Voir plus</a>

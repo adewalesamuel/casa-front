@@ -1,21 +1,20 @@
+
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Services } from '../services';
 import { Components } from '../components';
-import { Utils } from '../utils';
 
 export function CategoryListView() {
     let abortController = new AbortController();
 
     const { CategoryService, ProductService } = Services;
     
-    const navigate = useNavigate();
     const [searchParam] = useSearchParams();
 
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
-    const [page, setPage] = useState(1);
+    const [, setPage] = useState(1);
     const [, setPageLength] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
 

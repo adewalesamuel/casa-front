@@ -55,3 +55,15 @@ h1, h2, h3, h4, h5, h6, a {
 .badge-outline-primary {
   border: 1px solid var(--primary-color) !important;
 }
+
+.rounded-md {
+  border-radius: 10px;
+}
+
+.p-xs {
+  padding: 10px;
+}
+
+.border-primary {
+  border-color: var(--primary-color) !important;
+}

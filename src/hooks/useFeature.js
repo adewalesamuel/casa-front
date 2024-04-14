@@ -43,7 +43,7 @@ export const useFeature = () => {
         };
 
         return Services.FeatureService.update(
-        	featureId, JSON.stringify(payload), signal);
+            featureId, JSON.stringify(payload), signal);
     }
     const deleteFeature = (featureId, signal) => {
         return Services.FeatureService.destroy(featureId, signal);

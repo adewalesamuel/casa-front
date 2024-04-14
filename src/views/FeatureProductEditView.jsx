@@ -5,7 +5,7 @@ import { Hooks } from '../hooks';
 import { useParams } from 'react-router-dom';
 import { Services } from '../services';
 
-export function FeatureProductEditView() {
+export function FeatureProductShowView() {
     let abortController = new AbortController();
 
     const {id} = useParams();

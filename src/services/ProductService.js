@@ -11,6 +11,10 @@ const getById = (id, signal) => {
     return Api.get(`${ENDPOINT}/${id}`, signal);
 }
 
+const getBySlug = (slug, signal) => {
+    return Api.get(`${ENDPOINT}/${slug}`, signal);
+}
+
 const getByCategory = (category, params, signal) => {
     return Api.get(`${CategoryService.ENDPOINT}/${category}${ENDPOINT}?page=${params?.page ?? ''}`, signal);
 }
@@ -33,6 +37,7 @@ export const ProductService = {
     ENDPOINT,
     getAll,
     getById,
+    getBySlug,
     getByCategory,
     create,
     update,
