@@ -22,6 +22,7 @@ import { Loader } from './Loader';
 import { Spinner } from './Spinner';
 import { Pagination } from './Pagination';
 import { ErrorMessages } from './ErrorMessages';
+import { HasMore } from './HasMore';
 
 export const Components = {
     PermissionForm,
@@ -47,5 +48,6 @@ export const Components = {
 	Loader,
 	Spinner,
 	Pagination,
-	ErrorMessages
+	ErrorMessages,
+	HasMore
 }

@@ -104,14 +104,8 @@ export function CategoryListView() {
                             )
                     })}
                 </ul>
-                <div className='text-center py-5'>
-                    {isLoading && <Components.Spinner />}
-                    {(!isLoading && hasMore) &&
-                        <button className='btn btn-info btn-sm' onClick={() => setPage(page + 1)}>
-                            <Icons.PlusCircle /> Charger plus
-                        </button>
-                    }
-                </div>
+                <Components.HasMore isLoading={isLoading} page={page} 
+                    setPage={setPage} hasMore={hasMore}/>
             </div>
         </section>
     )
