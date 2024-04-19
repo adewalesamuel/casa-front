@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import * as Icons from 'react-feather';
 import logo from '../assets/logo.jpeg';
+import { Utils } from "../utils";
 	
 export function MainMenu() {
 	return (
@@ -27,22 +28,37 @@ export function MainMenu() {
                         </li>
                     </ul>
                 </div>
-                <div className="">
-                    <Link className="p-2 text-white" to={'/connexion'}>
+                {!Utils.Auth.isLoggedIn() && 
+                    <div className="">
+                        <Link className="p-2 text-white" to={'/connexion'}>
+                            <Icons.User className='mr-2' style={{
+                                width:'20px', 
+                                height:'20px', 
+                            }}/>
+                            <span className="d-inline-block">Connexion</span>
+                        </Link>
+                        <Link className="p-2 text-white" to={'/inscription'}>
+                            <Icons.UserPlus className='mr-2' style={{
+                                width:'20px', 
+                                height:'20px', 
+                            }}/>
+                            <span className="d-inline-block">Inscription</span>
+                        </Link>
+                    </div>
+                }
+
+                {Utils.Auth.isLoggedIn() && 
+                    <Link className="p-2 text-white" to={'/mon-profil'}>
                         <Icons.User className='mr-2' style={{
                             width:'20px', 
                             height:'20px', 
                         }}/>
-                        <span className="d-inline-block">Connexion</span>
+                        <span className="d-inline-block">
+                            {Utils.Auth.getUser()?.nom}
+                        </span>
                     </Link>
-                    <Link className="p-2 text-white" to={'/inscription'}>
-                        <Icons.UserPlus className='mr-2' style={{
-                            width:'20px', 
-                            height:'20px', 
-                        }}/>
-                        <span className="d-inline-block">Inscription</span>
-                    </Link>
-                </div>
+                }
+
             </nav>
 		)
 }

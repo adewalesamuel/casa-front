@@ -65,6 +65,7 @@ export function HeroSection() {
                             <select className="rounded custom-select ml-3 px-4 pr-5"
                             onChange={e => setMunicipality_id(e.target.value)} value={municipality_id}>
                                 <option hidden>Choisissez le lieu</option>
+                                <option value=''>Toutes les villes</option>
                                 {cities.map((city, index) => {
                                     return (
                                         <optgroup key={index} label={city.nom}>

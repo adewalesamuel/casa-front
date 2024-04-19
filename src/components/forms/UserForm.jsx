@@ -121,15 +121,6 @@ export function UserForm(props) {
             </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='api_token'>api_token</label>
-                        <input className='form-control' type='text' id='api_token' name='api_token' 
-                        placeholder='api_token' value={props.useUser.api_token ?? ''}
-                        disabled={props.isDisabled} onChange={ e => 
-                            props.useUser.setApi_token(e.target.value) ?? null} required/>
-                    </div>
-                </div>
-				<div className='col-12'>
-                    <div className='form-group'>
                         <label htmlFor='is_active'>is_active</label>
                         <input className='form-control' type='checkbox' id='is_active' name='is_active' 
                         placeholder='is_active' value={props.useUser.is_active ?? ''}

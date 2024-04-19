@@ -11,6 +11,8 @@ import { PromoCodeListView } from './PromoCodeListView';
 import { CategoryListView } from './CategoryListView';
 import { CategoryEditView } from './CategoryEditView';
 import { HomeView } from './HomeView';
+import { LoginView } from './LoginView';
+import { RegisterView } from './RegisterView';
 
 export const Views = {
 	UserListView,
@@ -26,5 +28,6 @@ export const Views = {
 	CategoryListView,
 	CategoryEditView,
 	HomeView,
-	
+	LoginView,
+	RegisterView,
 }

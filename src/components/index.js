@@ -23,6 +23,8 @@ import { Spinner } from './Spinner';
 import { Pagination } from './Pagination';
 import { ErrorMessages } from './ErrorMessages';
 import { HasMore } from './HasMore';
+import { LoginForm } from './forms/LoginForm';
+import { RegisterForm } from './RegisterForm';
 
 export const Components = {
     PermissionForm,
@@ -49,5 +51,7 @@ export const Components = {
 	Spinner,
 	Pagination,
 	ErrorMessages,
-	HasMore
+	HasMore,
+	LoginForm,
+	RegisterForm
 }

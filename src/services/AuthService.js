@@ -1,9 +1,9 @@
 import { Api } from './Api';
 
 const  ENPOINTS = {
-    Login: 'login',
-    Register: 'register',
-    Logout: 'logout'
+    Login: '/login',
+    Register: '/register',
+    Logout: '/logout'
 };
 
 

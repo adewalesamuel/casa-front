@@ -36,6 +36,7 @@ export function ProductListView() {
     }
 
     const init = useCallback(async () => {
+        setIsLoading(true);
         try {
             const {products} = await ProductService.getAll({
                 page: isSearch ? '' : 1, 

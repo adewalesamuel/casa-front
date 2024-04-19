@@ -4,7 +4,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --primary-color: #f2911c;
-  --secondary-color: #3f5672;
+  --secondary-color: #1c3659;
 }
 
 html, body, textarea, input, select {
@@ -66,4 +66,9 @@ h1, h2, h3, h4, h5, h6, a, button, .btn {
 
 .border-primary, .btn-primary {
   border-color: var(--primary-color) !important;
+}
+
+.form-control:not(.select2){
+  padding: 0.6rem 1rem !important;
+  height: auto !important;
 }

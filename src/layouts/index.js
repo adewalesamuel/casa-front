@@ -1,5 +1,7 @@
+import { AuthLayout } from './AuthLayout'
 import { MainLayout } from './MainLayout'
 
 export const Layouts = {
-	MainLayout
+	MainLayout,
+	AuthLayout
 }

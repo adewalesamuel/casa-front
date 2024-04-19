@@ -6,6 +6,7 @@ export const useUser = () => {
 	const [nom, setNom] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [password_confirmation, setPassword_confirmation] = useState('');
 	const [profile_img_url, setProfile_img_url] = useState('');
 	const [genre, setGenre] = useState('');
 	const [adresse, setAdresse] = useState('');
@@ -37,6 +38,7 @@ export const useUser = () => {
             nom,
 		email,
 		password,
+		password_confirmation,
 		profile_img_url,
 		genre,
 		adresse,
@@ -105,6 +107,7 @@ export const useUser = () => {
         setNom('');
 		setEmail('');
 		setPassword('');
+		setPassword_confirmation('');
 		setProfile_img_url('');
 		setGenre('');
 		setAdresse('');
@@ -125,6 +128,7 @@ export const useUser = () => {
         nom,
 		email,
 		password,
+		password_confirmation,
 		profile_img_url,
 		genre,
 		adresse,
@@ -143,6 +147,7 @@ export const useUser = () => {
         setNom,
 		setEmail,
 		setPassword,
+		setPassword_confirmation,
 		setProfile_img_url,
 		setGenre,
 		setAdresse,
