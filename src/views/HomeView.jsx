@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import * as Icons from 'react-feather';
 import { Components } from '../components'
 import { Services } from '../services'
 import 'swiper/css';

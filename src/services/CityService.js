@@ -1,6 +1,6 @@
 import { Api } from './Api';
 
-const ENDPOINT = '/citys';
+const ENDPOINT = '/cities';
 
 const getAll = (params, signal) => {
     return Api.get(`${ENDPOINT}?page=${params?.page ?? ''}`, signal)

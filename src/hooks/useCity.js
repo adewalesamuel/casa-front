@@ -40,7 +40,7 @@ export const useCity = () => {
         };
 
         return Services.CityService.update(
-        	cityId, JSON.stringify(payload), signal);
+            cityId, JSON.stringify(payload), signal);
     }
     const deleteCity = (cityId, signal) => {
         return Services.CityService.destroy(cityId, signal);

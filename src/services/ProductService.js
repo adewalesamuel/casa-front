@@ -4,7 +4,11 @@ const ENDPOINT = '/products';
 
 
 const getAll = (params, signal) => {
-    return Api.get(`${ENDPOINT}?page=${params?.page ?? ''}`, signal)
+    let searchParams = params?.municipality_id ? 
+    `&municipality_id=${params.municipality_id}`: '';
+    searchParams += params?.nom ? `&nom=${params.nom}`: '';
+
+    return Api.get(`${ENDPOINT}?page=${params?.page ?? ''}${searchParams}`, signal)
 }
 
 const getById = (id, signal) => {
