@@ -1,16 +1,19 @@
 
 //'use client'
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import * as Icons from 'react-feather';
 import { Services } from '../services';
 import { Components } from '../components';
+import { MainContext } from '../App';
 
 export function CategoryListView() {
     let abortController = new AbortController();
 
     const { CategoryService, ProductService } = Services;
     
+    const {IM_categories, setIM_categories} = useContext(MainContext);
+
     const [searchParam] = useSearchParams();
 
     const [categories, setCategories] = useState([]);
@@ -39,10 +42,17 @@ export function CategoryListView() {
 
     const init = useCallback(async () => {
         try {
-            const {categories} = await CategoryService.getAll(
-                {}, abortController.signal);
+            if (IM_categories.length === 0) {
+                const {categories} = await CategoryService.getAll(
+                    {}, abortController.signal);
 
-            setCategories(categories);
+                setCategories(categories)
+                setIM_categories(categories)
+
+                return;
+            }
+            
+            setCategories(IM_categories);
         } catch (error) {
             console.log(error);
         }

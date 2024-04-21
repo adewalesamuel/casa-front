@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Components } from '../components'
 import { Services } from '../services'
-import { MainContext } from '../routes/MainRoutes';
+import { MainContext } from '../App';
 import { useContext } from 'react'
 import 'swiper/css';
 

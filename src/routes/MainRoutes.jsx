@@ -1,23 +1,19 @@
 import { Routes, Route } from "react-router-dom"
 import { Views } from '../views';
 import { Layouts } from '../layouts';
-import { createContext, useState } from 'react'
+import { useState } from 'react'
+import { MainContext } from '../App';
 
-export const MainContext = createContext({
-	IM_categories:[],
-	setIM_categories:[],
-	IM_products:[],
-	setIM_products:[],
-	IM_recentProducts:[],
-	setIM_recentProducts:[]
-})
 
 export function MainRoutes() {
 	const [IM_recentProducts, setIM_recentProducts] = useState([]);
     const [IM_products, setIM_products] = useState([]);
+    const [IM_categories, setIM_categories] = useState([]);
 
 	return (
 			<MainContext.Provider value={{
+				IM_categories,
+				setIM_categories,
 				IM_products,
 				setIM_products,
 				IM_recentProducts,

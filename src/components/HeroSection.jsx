@@ -35,7 +35,8 @@ export function HeroSection() {
     }, [])
     
     useEffect(() => {   
-        if (pathList.includes(pathname) && cities.length > 0) return;
+        if (!pathList.includes(pathname)) return;
+        if (cities.length > 0) return;
 
         init();
         

@@ -32,6 +32,11 @@ export function ProductShowView() {
 
     useEffect(() => {
         init();
+
+        return () => {
+            abortController.abort();
+            abortController = new AbortController();
+        }
     }, [init])
 
     return (
