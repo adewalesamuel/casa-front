@@ -7,11 +7,11 @@ export function ImageFileInput(props) {
         try {
             const formData = new FormData();
 
-            formData.append('file', file);
+            formData.append('image', file);
 
-            const {file_url} = await Services.FileService.store(formData);
+            const {image_url} = await Services.FileService.store(formData);
 
-            props.setImg_url(file_url);
+            props.setImg_url(image_url);
         } catch(error) {
             if ('message' in error) alert(error.message);
         }
