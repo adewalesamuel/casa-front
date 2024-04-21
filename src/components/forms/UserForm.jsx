@@ -78,28 +78,6 @@ export function UserForm(props) {
                             props.useUser.setNumero_telegram(e.target.value) ?? null}/>
                     </div>
                 </div>
-                {props.useUser.is_company && 
-                    <>
-                        <div className='col-12'>
-                            <div className='form-group'>
-                                <label htmlFor='company_name'>company_name</label>
-                                <input className='form-control' type='text' id='company_name' name='company_name' 
-                                placeholder='company_name' value={props.useUser.company_name ?? ''}
-                                disabled={props.isDisabled} onChange={ e => 
-                                    props.useUser.setCompany_name(e.target.value) ?? null}/>
-                            </div>
-                        </div>
-        				<div className='col-12'>
-                            <div className='form-group'>
-                                <label htmlFor='company_logo_url'>company_logo_url</label>
-                                <input className='form-control' type='text' id='company_logo_url' name='company_logo_url' 
-                                placeholder='company_logo_url' value={props.useUser.company_logo_url ?? ''}
-                                disabled={props.isDisabled} onChange={ e => 
-                                    props.useUser.setCompany_logo_url(e.target.value) ?? null}/>
-                            </div>
-                        </div>
-                    </>
-                }
                 <div className="col-12">
                     <div className='form-group'>
                         <label htmlFor='type'>Type de compte</label>
@@ -112,17 +90,39 @@ export function UserForm(props) {
                         </select>
                     </div>
                 </div>
+                {(props.useUser.is_company == true) &&
+                    <>
+                        <div className='col-12'>
+                            <div className='form-group'>
+                                <label htmlFor='company_name'>company_name</label>
+                                <input className='form-control' type='text' id='company_name' name='company_name' 
+                                placeholder='company_name' value={props.useUser.company_name ?? ''}
+                                disabled={props.isDisabled} onChange={ e => 
+                                    props.useUser.setCompany_name(e.target.value) ?? null}/>
+                            </div>
+                        </div>
+                        <div className='col-12'>
+                            <div className='form-group'>
+                                <label htmlFor='company_logo_url'>company_logo_url</label>
+                                <input className='form-control' type='text' id='company_logo_url' name='company_logo_url' 
+                                placeholder='company_logo_url' value={props.useUser.company_logo_url ?? ''}
+                                disabled={props.isDisabled} onChange={ e => 
+                                    props.useUser.setCompany_logo_url(e.target.value) ?? null}/>
+                            </div>
+                        </div>
+                    </>
+                }
 				<div className='col-12'>
-                    <div className='form-group'>
-                        <label htmlFor='is_company'>is_company</label>
-                        <input className='form-control' type='checkbox' id='is_company' name='is_company' 
+                    <div className='form-check form-check-inline'>
+                        <label htmlFor='is_company' className='form-check-label'>is_company</label>
+                        <input className='form-check-input ml-2' type='checkbox' id='is_company' name='is_company' 
                         placeholder='is_company' value={props.useUser.is_company ?? false}
                         disabled={props.isDisabled} onChange={ e => 
                             props.useUser.setIs_company(!props.useUser.is_company) ?? null}/>
                     </div>
                 </div>
 				
-                <div className='col-12 text-right'>
+                <div className='col-12 text-right mt-5'>
                     <button disabled={props.isDisabled ?? false} type='submit' 
                     className='btn btn-primary'>
                         {props.isDisabled ? 'Chargement...' :  'Enregistrer'}

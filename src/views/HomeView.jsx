@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Components } from '../components'
 import { Services } from '../services'
+import { MainContext } from '../routes/MainRoutes';
+import { useContext } from 'react'
 import 'swiper/css';
 
 export function HomeView() {
     let abortController = new AbortController();
+
+    const {IM_products, setIM_products, 
+    IM_recentProducts, setIM_recentProducts} = useContext(MainContext);
 
     const [recentProducts, setRecentProducts] = useState([]);
     const [productList, setProductList] = useState([]);
@@ -41,10 +46,16 @@ export function HomeView() {
 
     const init = useCallback(async () => {
         try {
-            const {products} = await Services.ProductService.getAll(
-                {page:1}, abortController.signal);
+            if (IM_recentProducts.length === 0) {
+                const {products} = await Services.ProductService.getAll(
+                    {page:1}, abortController.signal);
 
-            setRecentProducts(products.data);
+                setRecentProducts(products.data);
+                setIM_recentProducts(products.data);
+            } else {
+                setRecentProducts(IM_recentProducts);
+            }
+
             setPage(page + 1);
         } catch(error){
             console.log(error);
@@ -63,6 +74,7 @@ export function HomeView() {
     }, [])
 
     useEffect(() => {
+        if (page === 1) return;
         loadProductList(page)
     }, [page]);
 

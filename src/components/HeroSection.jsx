@@ -13,7 +13,8 @@ export function HeroSection() {
     const [searchParams, ] = useSearchParams();
 
     const [cities, setCities] = useState([]);
-    const [municipality_id, setMunicipality_id] = useState(searchParams.get('municipality_id') ?? '');
+    const [municipality_id, setMunicipality_id] = useState(
+        searchParams.get('municipality_id') ?? '');
     const [nom, setNom] = useState(searchParams.get('nom') ?? '');
 
     const handleSearchSubmit = e => {
