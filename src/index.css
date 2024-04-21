@@ -72,3 +72,15 @@ h1, h2, h3, h4, h5, h6, a, button, .btn {
   padding: 0.6rem 1rem !important;
   height: auto !important;
 }
+
+.list-group-item a {
+  color: var(--secondary-color);
+}
+
+.list-group-item a.active {
+  background-color: red;
+}
+
+.list-group-item a.bg-primary:focus, .list-group-item a.bg-primary:hover {
+    background-color: var(--primary-color) !important;
+}

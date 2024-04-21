@@ -25,6 +25,7 @@ import { ErrorMessages } from './ErrorMessages';
 import { HasMore } from './HasMore';
 import { LoginForm } from './forms/LoginForm';
 import { RegisterForm } from './RegisterForm';
+import { ImageFileInput } from './ImageFileInput';
 
 export const Components = {
     PermissionForm,
@@ -53,5 +54,6 @@ export const Components = {
 	ErrorMessages,
 	HasMore,
 	LoginForm,
-	RegisterForm
+	RegisterForm,
+	ImageFileInput
 }

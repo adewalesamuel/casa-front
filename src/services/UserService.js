@@ -14,8 +14,8 @@ const create = (payload, signal) => {
     return Api.post(ENDPOINT, payload, signal)
 }
 
-const update = (id, payload, signal) => {
-    return Api.put(`${ENDPOINT}/${id}`, payload, signal)
+const update = (payload, signal) => {
+    return Api.put(`/profile`, payload, signal)
 }
 const destroy = (id, signal) => {
     return Api.erase(`${ENDPOINT}/${id}`, signal)

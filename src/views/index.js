@@ -13,6 +13,8 @@ import { CategoryEditView } from './CategoryEditView';
 import { HomeView } from './HomeView';
 import { LoginView } from './LoginView';
 import { RegisterView } from './RegisterView';
+import { UserProfileView } from './UserProfileView';
+import { PrivateView } from './PrivateView';
 
 export const Views = {
 	UserListView,
@@ -30,4 +32,6 @@ export const Views = {
 	HomeView,
 	LoginView,
 	RegisterView,
+	UserProfileView,
+	PrivateView
 }

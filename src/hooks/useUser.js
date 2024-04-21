@@ -57,7 +57,7 @@ export const useUser = () => {
         return Services.UserService.create(
         JSON.stringify(payload), signal);
     }
-    const updateUser = (userId, signal) => {
+    const updateUser = (signal) => {
         const payload = {
             nom,
 		email,
@@ -77,8 +77,7 @@ export const useUser = () => {
 		
         };
 
-        return Services.UserService.update(
-			userId, JSON.stringify(payload), signal);
+        return Services.UserService.update(JSON.stringify(payload), signal);
     }
     const deleteUser = (userId, signal) => {
         return Services.UserService.destroy(userId, signal);

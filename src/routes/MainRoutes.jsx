@@ -8,6 +8,7 @@ export function MainRoutes() {
 				<Routes>
 					<Route path='' element={<Views.HomeView />}/>
 					<Route path='categories' element={<Views.CategoryListView />}/>
+					<Route path='mon-profil/*' element={<Views.PrivateView View={Views.UserProfileView} />}/>
 					<Route path='categories' element={<Views.CategoryListView />}/>
 					<Route path='publications' element={<Views.ProductListView />}/>
 					<Route path='publications/:slug' element={<Views.ProductShowView />}/>
