@@ -29,7 +29,7 @@ export function UserForm(props) {
                             props.useUser.setEmail(e.target.value) ?? null}/>
                     </div>
                 </div>
-    			<div className='col-12'>
+                <div className='col-12'>
                     <div className='form-group'>
                         <label htmlFor='genre'>genre</label>
                         <select className='select2 form-control' id='genre' name='genre' 
@@ -117,7 +117,7 @@ export function UserForm(props) {
                         <label htmlFor='is_company' className='form-check-label'>is_company</label>
                         <input className='form-check-input ml-2' type='checkbox' id='is_company' name='is_company' 
                         placeholder='is_company' value={props.useUser.is_company ?? false}
-                        disabled={props.isDisabled} onChange={ e => 
+                        disabled={props.isDisabled} onChange={ () => 
                             props.useUser.setIs_company(!props.useUser.is_company) ?? null}/>
                     </div>
                 </div>

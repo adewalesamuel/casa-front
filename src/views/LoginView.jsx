@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Components } from "../components";
 import { Layouts } from "../layouts";
 
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/img/logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { Services } from "../services";
 import { Utils } from "../utils";
@@ -47,7 +47,7 @@ export function LoginView() {
             <div style={{maxWidth: "400px"}}>
                 <div className="card px-2 pt-5 pb-2">
                     <div className="text-center">
-                        <img src={logo} alt="logo" width={100} height={100} />
+                        <img src={logo} alt="logo" width={100} />
                     </div>
                     <div className="card-body">
                         <Components.ErrorMessages>

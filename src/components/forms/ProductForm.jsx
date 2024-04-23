@@ -46,9 +46,11 @@ export function ProductForm(props) {
                     value={props.useProduct.type_paiement ?? ''} disabled={props.isDisabled} 
                     onChange={ e => props.useProduct.setType_paiement(e.target.value) ?? null}>
                         <option hidden>Choisissez une option</option>
-                        <option value='pending'>En cours</option>
-                        <option value='validated'>Validé</option>
-                        <option value='canceled'>Annulé</option>
+                        <option value='mois'>Par mois</option>
+                        <option value='an'>Par an</option>
+                        <option value='unique'>Par unique</option>
+                        <option value='semaine'>Par semaine</option>
+                        <option value='jour'>Par jour</option>
                     </select>
                 </div>
             </div>

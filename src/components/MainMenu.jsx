@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import * as Icons from 'react-feather';
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/img/logo.png';
 import { Utils } from "../utils";
 	
 export function MainMenu() {
 	return (
 			<nav className="navbar navbar-expand-lg navbar-light">
-                <Link className="navbar-brand" to='/'>
-                    <img src={logo} className="site-logo" /> 
+                <Link className="navbar-brand bg-white px-2" to='/'>
+                    <img src={logo} className="site-logo" width={70} /> 
                 </Link>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mx-auto">

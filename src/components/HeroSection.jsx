@@ -60,11 +60,11 @@ export function HeroSection() {
                                         <Icons.Search />
                                     </span>
                                 </div>
-                                <input className="bg-white form-control border-0 pl-0" type="search" 
+                                <input className="bg-white form-control border-0 pl-0 flex-fill" type="search" 
                                     name="search" placeholder="Recherchez..." value={nom} 
                                     onChange={e => setNom(e.target.value)}/>
                             </div>
-                            <select className="rounded custom-select ml-3 px-4 pr-5"
+                            <select className="rounded custom-select ml-3 px-4 pr-5 py-2.5"
                             onChange={e => setMunicipality_id(e.target.value)} value={municipality_id}>
                                 <option hidden>Choisissez le lieu</option>
                                 <option value=''>Toutes les villes</option>

@@ -18,17 +18,16 @@ h1, h2, h3, h4, h5, h6, a, button, .btn {
   font-family: Poppins;
 }
 
+select {
+  height: unset !important;
+}
+
 #mainHeader {
   background-color: var(--primary-color);
   background-position: center;
   background-size: cover;
   background-image: url('./assets/img/hero-bg.jpeg');
   background-repeat: no-repeat;
-}
-
-.site-logo {
-  width: 60px;
-  height: auto;
 }
 
 .text-black {
@@ -68,7 +67,7 @@ h1, h2, h3, h4, h5, h6, a, button, .btn {
   border-color: var(--primary-color) !important;
 }
 
-.form-control:not(.select2){
+.form-control, select{
   padding: 0.6rem 1rem !important;
   height: auto !important;
 }

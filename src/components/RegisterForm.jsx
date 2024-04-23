@@ -23,7 +23,7 @@ export function RegisterForm(props){
                 <div className="col-12">
                     <div className='form-group'>
                         <label htmlFor='type'>Type de compte</label>
-                        <select className='form-control rounded-md' id='type' name='type' 
+                        <select className='form-control rounded-md custom-select' id='type' name='type' 
                         value={props.useUser.type ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useUser.setType(e.target.value) ?? null}>
                             <option hidden>Choisissez une option</option>
