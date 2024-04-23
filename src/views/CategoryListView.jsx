@@ -2,7 +2,6 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import * as Icons from 'react-feather';
 import { Services } from '../services';
 import { Components } from '../components';
 
@@ -77,8 +76,8 @@ export function CategoryListView() {
     return (
         <section id="category">
             <div className="">
-                <ul className="row list-unstyled py-3 pb-4 m-0 text-nowrap 
-                mw-100 overflow-auto justify-content-left flex-nowrap">
+                <ul className="row list-unstyled py-3 m-0 text-nowrap 
+                mw-100 overflow-auto justify-content-left flex-nowrap hide-scroll-bar">
                     {categories.map((categorie, index) => {
                         const isCurrentCaterory = (searchParam.get('category') && 
                                                     searchParam.get('category') === categorie.slug);

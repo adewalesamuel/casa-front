@@ -8,7 +8,7 @@ export function RegisterForm(props){
                         <input className='form-control rounded-md' type='text' id='nom' name='nom' 
                         placeholder='Nom' value={props.useUser.nom ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
-                            props.useUser.setNom(e.target.value) ?? null} required/>
+                            props.useUser.setNom(e.target.value) ?? null} />
                     </div>
                 </div>
                 <div className='col-12'>
@@ -17,7 +17,7 @@ export function RegisterForm(props){
                         <input className='form-control rounded-md' type='tel' id='numero_telephone' name='numero_telephone' 
                         placeholder='Numéro de Téléphone' value={props.useUser.numero_telephone ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
-                            props.useUser.setNumero_telephone(e.target.value) ?? null} required/>
+                            props.useUser.setNumero_telephone(e.target.value) ?? null} />
                     </div>
                 </div>
                 <div className="col-12">
@@ -38,7 +38,7 @@ export function RegisterForm(props){
                         <input className='form-control rounded-md' type='email' id='email' name='email' 
                         placeholder='E-mail' value={props.useUser.email ?? ''}
                         disabled={props.useUser.isDisabled} onChange={ e => 
-                            props.useUser.setEmail(e.target.value) ?? null} required/>
+                            props.useUser.setEmail(e.target.value) ?? null} />
                     </div>
                 </div>
 				<div className='col-12'>
@@ -47,7 +47,7 @@ export function RegisterForm(props){
                         <input className='form-control rounded-md' type='password' id='password' name='password' 
                         placeholder='Mot de passe' value={props.useUser.password ?? ''}
                         disabled={props.useUser.isDisabled} onChange={ e => 
-                            props.useUser.setPassword(e.target.value) ?? null} required/>
+                            props.useUser.setPassword(e.target.value) ?? null} />
                     </div>
                 </div>
                 <div className='col-12'>
@@ -56,7 +56,7 @@ export function RegisterForm(props){
                         <input className='form-control rounded-md' type='password' id='password' 
                         name='password' placeholder='' value={props.useUser.password_confirmation ?? ''}
                         disabled={props.useUser.isDisabled} onChange={ e => 
-                            props.useUser.setPassword_confirmation(e.target.value) ?? null} required/>
+                            props.useUser.setPassword_confirmation(e.target.value) ?? null} />
                     </div>
                 </div>
                 <div className='col-12 text-center mt-2'>

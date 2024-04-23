@@ -64,7 +64,7 @@ export function ProductListView() {
     }, [init])
 
     useEffect(() => {
-        if (page === '') return;
+        if (page === '' || page === 1) return;
         loadProductList(page)
     }, [page]);
 

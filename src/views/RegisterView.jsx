@@ -49,10 +49,7 @@ export function RegisterView() {
 
     return (
         <Layouts.AuthLayout>
-            <div style={{
-                maxWidth: "400px", 
-                paddingTop: "13rem", 
-                paddingBottom: "2rem"}}>
+            <div style={{maxWidth: "400px"}}>
                 <div className="card px-2 pt-5 pb-2">
                     <div className="text-center">
                         <img src={logo} alt="logo" width={100} height={100} />

@@ -63,6 +63,7 @@ export function HomeView() {
     }, [])
 
     useEffect(() => {
+        if (page === 1) return;
         loadProductList(page)
     }, [page]);
 

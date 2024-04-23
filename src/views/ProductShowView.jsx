@@ -32,6 +32,11 @@ export function ProductShowView() {
 
     useEffect(() => {
         init();
+
+        return () => {
+            abortController.abort()
+            abortController = new AbortController();
+        }   
     }, [init])
 
     return (
@@ -88,8 +93,8 @@ export function ProductShowView() {
                         <hr />
                         <div className=''>
                             <h5>Caracteristiques du bien</h5>
-                            <ul className='row list-unstyled py-2 m-0 text-nowrap 
-                            mw-100 overflow-auto justify-content-left flex-nowrap'>
+                            <ul className='row list-unstyled py-2 m-0 text-nowrap mw-100 overflow-auto 
+                            justify-content-left flex-nowrap hide-scroll-bar'>
                                 {useProduct.features.map((feature, index) => {
                                     return (
                                         <li className='px-1 position-relative' key={index}>
