@@ -83,3 +83,14 @@ h1, h2, h3, h4, h5, h6, a, button, .btn {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 } 
+.list-group-item a {
+  color: var(--secondary-color);
+}
+
+.list-group-item a.active {
+  background-color: red;
+}
+
+.list-group-item a.bg-primary:focus, .list-group-item a.bg-primary:hover {
+    background-color: var(--primary-color) !important;
+}

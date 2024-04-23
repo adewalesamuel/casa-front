@@ -4,6 +4,7 @@ import { Components } from '../components';
 import { Hooks } from '../hooks';
 import { useParams } from 'react-router-dom';
 import { Services } from '../services';
+import { Utils } from '../utils';
 
 export function UserEditView() {
     let abortController = new AbortController();
@@ -21,8 +22,8 @@ export function UserEditView() {
         setErrorMessages([]);
         
         try {
-            await useUser.updateUser(
-            	id, abortController.signal);
+            const {user} = await useUser.updateUser(abortController.signal);
+            Utils.Auth.setUser(user);
         } catch (error) {
             if ('message' in error) setErrorMessages([error.message]);
             if (!('messages' in error)) return;
@@ -39,9 +40,7 @@ export function UserEditView() {
         useUser.setIsDisabled(true);
 
         try {
-            await useUser.getUser(id, abortController.signal);
-            
-            
+            useUser.fillUser(Utils.Auth.getUser())
         } catch (error) {
             console.log(error);
         } finally{
@@ -55,7 +54,7 @@ export function UserEditView() {
 
     return (
         <>
-            <h3>Modifier User</h3>
+            <h3 className='d-none d-md-block'>Modifier mes informations</h3>
 
             <Components.ErrorMessages>
                 {errorMessages}

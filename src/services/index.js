@@ -13,6 +13,7 @@ import { CommentService } from './CommentService';
 import { FavoriteService } from './FavoriteService';
 import { PromoCodeService } from './PromoCodeService';
 import { AuthService } from './AuthService';
+import { FileService } from './FileService';
 
 export const Services = {
     PermissionService,
@@ -29,6 +30,7 @@ export const Services = {
 	CommentService,
 	FavoriteService,
 	PromoCodeService,
-	AuthService
+	AuthService,
+	FileService
 	
 }

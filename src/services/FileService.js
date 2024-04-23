@@ -1,7 +1,7 @@
 import { Api } from './Api';
 
 const  ENPOINTS = {
-    File: 'upload',
+    File: '/upload',
 };
 
 const store = (payload, signal) => {

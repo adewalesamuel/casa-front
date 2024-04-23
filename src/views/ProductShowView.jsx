@@ -34,9 +34,9 @@ export function ProductShowView() {
         init();
 
         return () => {
-            abortController.abort()
+            abortController.abort();
             abortController = new AbortController();
-        }   
+        }
     }, [init])
 
     return (

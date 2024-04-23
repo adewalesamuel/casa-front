@@ -48,15 +48,24 @@ export function MainMenu() {
                 }
 
                 {Utils.Auth.isLoggedIn() && 
-                    <Link className="p-2 text-white" to={'/mon-profil'}>
-                        <Icons.User className='mr-2' style={{
-                            width:'20px', 
-                            height:'20px', 
-                        }}/>
-                        <span className="d-inline-block">
-                            {Utils.Auth.getUser()?.nom}
-                        </span>
-                    </Link>
+                    <>
+                        <Link className="p-2 text-white" to={'/mon-profil/modifier'}>
+                            <Icons.User className='mr-2' style={{
+                                width:'20px', 
+                                height:'20px', 
+                            }}/>
+                            <span className="d-inline-block">
+                                {Utils.Auth.getUser()?.nom}
+                            </span>
+                        </Link>
+                         <Link className="btn btn-sm bg-white rounded-pill ml-2 pr-3" 
+                         to={'/mon-profil/nouvelle-publication'}>
+                            <Icons.Plus className='mr-2' style={{
+                                width:'20px', 
+                                height:'20px', 
+                            }}/> Publication
+                        </Link>
+                    </>
                 }
 
             </nav>
