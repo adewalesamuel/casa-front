@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Components } from "../components";
 import { Layouts } from "../layouts";
 
-import logo from '../assets/img/logo.png';
+import logo from '../assets/img/logo.jpeg';
 import { Link, useNavigate } from "react-router-dom";
 import { Services } from "../services";
 import { Utils } from "../utils";
