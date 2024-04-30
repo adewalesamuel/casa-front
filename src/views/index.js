@@ -16,6 +16,7 @@ import { RegisterView } from './RegisterView';
 import { UserProfileView } from './UserProfileView';
 import { PrivateView } from './PrivateView';
 import { AboutUsView } from './AboutUsView';
+import { ContactView } from './ContactView';
 
 export const Views = {
 	UserListView,
@@ -35,5 +36,6 @@ export const Views = {
 	RegisterView,
 	UserProfileView,
 	PrivateView,
-	AboutUsView
+	AboutUsView,
+	ContactView
 }

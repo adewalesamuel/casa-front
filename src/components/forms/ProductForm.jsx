@@ -24,10 +24,10 @@ export function ProductForm(props) {
 				<div className='col-12'>
                     <div className='form-group'>
                         <label htmlFor='description'>description</label>
-                        <input className='form-control' type='text' id='description' name='description' 
+                        <textarea className='form-control' type='text' id='description' name='description' 
                         placeholder='description' value={props.useProduct.description ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
-                            props.useProduct.setDescription(e.target.value) ?? null} required/>
+                            props.useProduct.setDescription(e.target.value) ?? null} required></textarea>
                     </div>
                 </div>
 				<div className='col-12'>

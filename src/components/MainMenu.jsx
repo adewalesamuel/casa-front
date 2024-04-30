@@ -26,6 +26,11 @@ export function MainMenu() {
                                 <span>Qui sommes nous</span>
                             </Link>
                         </li>
+                        <li className="mx-1">
+                            <Link className="nav-link p-2 text-white" to={'/contactez-nous'}>
+                                <span>Contact</span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 {!Utils.Auth.isLoggedIn() && 

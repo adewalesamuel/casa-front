@@ -22,6 +22,10 @@ select {
   height: unset !important;
 }
 
+textarea {
+  resize: none;
+}
+
 #mainHeader {
   background-color: var(--primary-color);
   background-position: center;
