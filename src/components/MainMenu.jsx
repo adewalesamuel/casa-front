@@ -22,8 +22,8 @@ export function MainMenu() {
                             </Link>
                         </li>
                         <li className="mx-1">
-                            <Link className="nav-link p-2 text-white" to={'/'}>
-                                <span>Favoris</span>
+                            <Link className="nav-link p-2 text-white" to={'/qui-sommes-nous'}>
+                                <span>Qui sommes nous</span>
                             </Link>
                         </li>
                     </ul>

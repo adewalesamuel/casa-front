@@ -22,6 +22,7 @@ export function MainRoutes() {
 				<Layouts.MainLayout>
 					<Routes>
 						<Route path='' element={<Views.HomeView />}/>
+						<Route path='qui-sommes-nous' element={<Views.AboutUsView />}/>
 						<Route path='categories' element={<Views.CategoryListView />}/>
 						<Route path='mon-profil/*' element={<Views.PrivateView View={Views.UserProfileView} />}/>
 						<Route path='categories' element={<Views.CategoryListView />}/>
