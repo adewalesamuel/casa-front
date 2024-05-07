@@ -22,7 +22,10 @@ export function MobileRoutes() {
 				<Layouts.MobileLayout>
 					<Routes>
 						<Route path='' element={<Views.HomeView />}/>
-
+						<Route path='categories' element={<Views.CategoryListView />}/>
+						<Route path='publications' element={<Views.ProductListView />}/>
+						<Route path='publications/:slug' element={<Views.ProductShowView />}/>
+						<Route path='categories/:slug' element={<Views.CategoryEditView />}/>
 					</Routes>
 				</Layouts.MobileLayout>
 

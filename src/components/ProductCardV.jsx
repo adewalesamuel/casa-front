@@ -1,11 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import * as Icons from 'react-feather';
 import placeholderImg from '../assets/img/placeholder.webp';
 
 export function ProductCardV({product}) {
+    const {pathname} = useLocation();
+
+    const [isMobile,] = useState(pathname.startsWith('/mobile'));
+
 	return (
 			<article className="card p-2">
-                <Link className="" to={`/publications/${product?.slug ?? ''}`}>
+                <Link className="" to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`}>
                     <img className="card-img-top rounded img-fluid" src={product.images_url_list[0] ?? ''} 
                     alt={product?.nom ?? ''} loading='lazy' width={219} height={159} 
                     onError={event => event.currentTarget.src = placeholderImg}/>
