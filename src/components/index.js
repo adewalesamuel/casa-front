@@ -14,6 +14,7 @@ import { FavoriteForm } from './forms/FavoriteForm';
 import { PromoCodeForm } from './forms/PromoCodeForm';
 import { Header } from './Header';
 import { HeroSection } from './HeroSection';
+import { MobileHeroSection } from './MobileHeroSection';
 import { MainMenu } from './MainMenu';
 import { Footer } from './Footer';
 import { ProductCardH } from './ProductCardH';
@@ -26,6 +27,7 @@ import { HasMore } from './HasMore';
 import { LoginForm } from './forms/LoginForm';
 import { RegisterForm } from './RegisterForm';
 import { ImageFileInput } from './ImageFileInput';
+import { MobileHeader } from './MobileHeader';
 
 export const Components = {
     PermissionForm,
@@ -44,6 +46,7 @@ export const Components = {
 	PromoCodeForm,
 	Header,
 	HeroSection,
+	MobileHeroSection,
 	MainMenu,
 	Footer,
 	ProductCardH,
@@ -55,5 +58,6 @@ export const Components = {
 	HasMore,
 	LoginForm,
 	RegisterForm,
-	ImageFileInput
+	ImageFileInput,
+	MobileHeader
 }

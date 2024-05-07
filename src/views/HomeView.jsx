@@ -82,7 +82,7 @@ export function HomeView() {
 			<section id="home">
 				<section className="py-3">
                     <div className="d-flex align-items-center justify-content-between">
-                        <h5>Publicaitons récentes</h5>
+                        <h5>Publications récentes</h5>
                         <Link to={'/publications'} className="btn btn-link text-primary">Voir plus</Link>
                     </div>
                     <Components.Loader isLoading={isLoadingRecents}>
