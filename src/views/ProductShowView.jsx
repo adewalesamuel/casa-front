@@ -47,7 +47,7 @@ export function ProductShowView() {
                         <img className='img-fluid w-100 rounded-md' alt={useProduct.nom} loading='lazy'
                         src={useProduct.display_img_url_list[imageIndex] ?? ''} width={500} height={400}
                         onError={event => event.currentTarget.src = placeholderImg}/>
-                        <div className='px-2 px-md-0 mt-O mt-md-2 product-image-list-container'>
+                        <div className='mt-2 product-image-list-container'>
                             <div className='card rounded-md'>
                                 <div className='card-body p-xs'>
                                     <ul className='row list-unstyled mb-0'>
@@ -118,7 +118,7 @@ export function ProductShowView() {
                                 })}
                             </ul>
                         </div>
-                        <div className='d-none d-md-block mt-2'>
+                        <div className='mt-2'>
                             <h5>Description</h5>
                             <p className='text-muted'>{useProduct.description}</p>
                         </div>

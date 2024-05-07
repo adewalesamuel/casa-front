@@ -60,11 +60,12 @@ export function HeroSection() {
                                         <Icons.Search />
                                     </span>
                                 </div>
-                                <input className="bg-white form-control border-0 pl-0 flex-fill" type="search" 
-                                    name="search" placeholder="Recherchez..." value={nom} 
-                                    onChange={e => setNom(e.target.value)}/>
+
+                                <input className="bg-white form-control border-0 pl-0 flex-fill" 
+                                type="search" name="search" placeholder="Recherchez..." value={nom} 
+                                onChange={e => setNom(e.target.value)}/>
                             </div>
-                            <select className="rounded custom-select ml-3 px-4 pr-5 py-2.5"
+                            <select className="rounded custom-select ml-md-3 px-4 pr-5 py-2.5 mt-3 mt-md-0"
                             onChange={e => setMunicipality_id(e.target.value)} value={municipality_id}>
                                 <option hidden>Choisissez le lieu</option>
                                 <option value=''>Toutes les villes</option>
@@ -82,7 +83,8 @@ export function HeroSection() {
                                     )
                                 })}
                             </select>
-                            <button className="btn bg-white rounded-circle p-2 ml-3" type='submit'>
+                            <button className="btn bg-white rounded-circle p-2 ml-md-3 mt-3 
+                            mt-md-0" type='submit'>
                                 <Icons.Search />
                             </button>
                         </form>        
