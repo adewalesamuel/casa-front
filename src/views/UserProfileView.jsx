@@ -27,7 +27,7 @@ export function UserProfileView() {
 	return (
 			<section id="profile">
 				<div className="row">
-					<div className="col-4 d-none d-md-block">
+					<div className="col-md-4 col-12 mb-4">
 						<ul className="list-group">
 						  <li className="list-group-item p-0">
 						    <NavLink to='/mon-profil/modifier' className={({isActive}) => isActive ? 

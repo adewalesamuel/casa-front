@@ -1,19 +1,22 @@
 import { Components } from '..';
+import { Utils } from '../../utils';
 
 export function UserForm(props) {
+    const {_} = Utils.String;
+
     return (
         <form onSubmit={props.handleFormSubmit ?? null}>
             <div className='row'>
                 <div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='profile_img_url'>profile_img_url</label>
+                        <label htmlFor='profile_img_url'>{_('profile_img_url')}</label>
                         <Components.ImageFileInput img_url={props.useUser.profile_img_url}
                         setImg_url={props.useUser.setProfile_img_url} />
                     </div>
                 </div>
                 <div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='nom'>nom</label>
+                        <label htmlFor='nom'>{_('nom')}</label>
                         <input className='form-control' type='text' id='nom' name='nom' 
                         placeholder='nom' value={props.useUser.nom ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
@@ -22,7 +25,7 @@ export function UserForm(props) {
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='email'>email</label>
+                        <label htmlFor='email'>{_('email')}</label>
                         <input className='form-control' type='email' id='email' name='email' 
                         placeholder='email' value={props.useUser.email ?? ''} required
                         disabled={props.isDisabled} onChange={ e => 
@@ -31,8 +34,8 @@ export function UserForm(props) {
                 </div>
                 <div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='genre'>genre</label>
-                        <select className='select2 form-control' id='genre' name='genre' 
+                        <label htmlFor='genre'>{_('genre')}</label>
+                        <select className='custom-select form-control' id='genre' name='genre' 
                         value={props.useUser.genre ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useUser.setGenre(e.target.value) ?? null}>
                             <option hidden>Choisissez une option</option>
@@ -44,7 +47,7 @@ export function UserForm(props) {
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='adresse'>adresse</label>
+                        <label htmlFor='adresse'>{_('adresse')}</label>
                         <input className='form-control' type='text' id='adresse' name='adresse' 
                         placeholder='adresse' value={props.useUser.adresse ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
@@ -53,7 +56,7 @@ export function UserForm(props) {
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='numero_telephone'>numero_telephone</label>
+                        <label htmlFor='numero_telephone'>{_('numero_telephone')}</label>
                         <input className='form-control' type='tel' id='numero_telephone' name='numero_telephone' 
                         placeholder='numero_telephone' value={props.useUser.numero_telephone ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
@@ -62,7 +65,7 @@ export function UserForm(props) {
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='numero_whatsapp'>numero_whatsapp</label>
+                        <label htmlFor='numero_whatsapp'>{_('numero_whatsapp')}</label>
                         <input className='form-control' type='tel' id='numero_whatsapp' name='numero_whatsapp' 
                         placeholder='numero_whatsapp' value={props.useUser.numero_whatsapp ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
@@ -71,7 +74,7 @@ export function UserForm(props) {
                 </div>
 				<div className='col-12'>
                     <div className='form-group'>
-                        <label htmlFor='numero_telegram'>numero_telegram</label>
+                        <label htmlFor='numero_telegram'>{_('numero_telegram')}</label>
                         <input className='form-control' type='tel' id='numero_telegram' name='numero_telegram' 
                         placeholder='numero_telegram' value={props.useUser.numero_telegram ?? ''}
                         disabled={props.isDisabled} onChange={ e => 
@@ -80,8 +83,8 @@ export function UserForm(props) {
                 </div>
                 <div className="col-12">
                     <div className='form-group'>
-                        <label htmlFor='type'>Type de compte</label>
-                        <select className='form-control rounded-md' id='type' name='type' 
+                        <label htmlFor='type'>{_('Type de compte')}</label>
+                        <select className='form-control custom-select' id='type' name='type' 
                         value={props.useUser.type ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useUser.setType(e.target.value) ?? null}>
                             <option hidden>Choisissez une option</option>
@@ -90,11 +93,20 @@ export function UserForm(props) {
                         </select>
                     </div>
                 </div>
+                <div className='col-12'>
+                    <div className='form-check form-check-inline'>
+                        <label htmlFor='is_company' className='form-check-label d-inline-block'>{_('is_company')}</label>
+                        <input className='form-check-input ml-2' type='checkbox' id='is_company' name='is_company' 
+                        placeholder='is_company' value={props.useUser.is_company ?? false}
+                        disabled={props.isDisabled} onChange={ () => 
+                            props.useUser.setIs_company(!props.useUser.is_company) ?? null}/>
+                    </div>
+                </div>
                 {(props.useUser.is_company == true) &&
                     <>
                         <div className='col-12'>
                             <div className='form-group'>
-                                <label htmlFor='company_name'>company_name</label>
+                                <label htmlFor='company_name'>{_('company_name')}</label>
                                 <input className='form-control' type='text' id='company_name' name='company_name' 
                                 placeholder='company_name' value={props.useUser.company_name ?? ''}
                                 disabled={props.isDisabled} onChange={ e => 
@@ -103,7 +115,7 @@ export function UserForm(props) {
                         </div>
                         <div className='col-12'>
                             <div className='form-group'>
-                                <label htmlFor='company_logo_url'>company_logo_url</label>
+                                <label htmlFor='company_logo_url'>{_('company_logo_url')}</label>
                                 <input className='form-control' type='text' id='company_logo_url' name='company_logo_url' 
                                 placeholder='company_logo_url' value={props.useUser.company_logo_url ?? ''}
                                 disabled={props.isDisabled} onChange={ e => 
@@ -112,15 +124,6 @@ export function UserForm(props) {
                         </div>
                     </>
                 }
-				<div className='col-12'>
-                    <div className='form-check form-check-inline'>
-                        <label htmlFor='is_company' className='form-check-label'>is_company</label>
-                        <input className='form-check-input ml-2' type='checkbox' id='is_company' name='is_company' 
-                        placeholder='is_company' value={props.useUser.is_company ?? false}
-                        disabled={props.isDisabled} onChange={ () => 
-                            props.useUser.setIs_company(!props.useUser.is_company) ?? null}/>
-                    </div>
-                </div>
 				
                 <div className='col-12 text-right mt-5'>
                     <button disabled={props.isDisabled ?? false} type='submit' 
