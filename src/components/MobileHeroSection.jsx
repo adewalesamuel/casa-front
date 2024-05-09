@@ -30,6 +30,9 @@ export function MobileHeroSection() {
         }
     }, [pathname])
 
+    if (pathname.startsWith('/mobile/publications/'))
+        return null;
+
 	return (
             <div className="text-white mt-xl-5 text-center mx-auto">
                 {pathList.includes(pathname) && 
@@ -51,7 +54,9 @@ export function MobileHeroSection() {
                     </form>        
                 }
                 {!pathList.includes(pathname) && 
-                    <h3 className="text-uppercase text-break">{pathname.replace('/',' ')}</h3>
+                    <h4 className="text-uppercase text-break mt-5">
+                        {pathname.replace('/mobile', '').replace('/',' ')}
+                    </h4>
                 }
             </div>
 		)

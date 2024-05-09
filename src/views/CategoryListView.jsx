@@ -94,7 +94,7 @@ export function CategoryListView() {
                         return (
                                 <li className="px-md-2 px-1" key={index}>
                                     <Link className="btn btn-info" 
-                                    to={`/categories?category=${categorie.slug}`} 
+                                    to={`?category=${categorie.slug}`} 
                                     style={{opacity: `${isCurrentCaterory ? 1 : 0.6}`}}>
                                         {categorie?.nom ?? '---'}
                                     </Link>

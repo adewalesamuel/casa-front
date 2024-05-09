@@ -10,6 +10,9 @@ export function MobileHeader() {
         window.scrollTo({top: 0});
     }, [pathname])
 
+    if (pathname.startsWith('/mobile/publications/'))
+        return null;
+
 	return (
 			<header id="mobileHeader" className="bg-primary position-relative p-2">
                 <div className="d-flex justify-content-between">
