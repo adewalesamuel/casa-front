@@ -17,7 +17,8 @@ export function ProductCardV({product}) {
                 </Link>
                 <div className="card-body px-1 py-2">
                     <h5 className="card-title mb-0 text-secondary">
-                        <Link to={`/publications/${product?.slug ?? ''}`} className="text-secondary">
+                        <Link to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`} 
+                        className="text-secondary">
                             {product?.nom ?? "---"}
                         </Link>
                     </h5>                    
@@ -25,7 +26,9 @@ export function ProductCardV({product}) {
                     text-nowrap" style={{
                         textOverflow:"ellipsis",
                         maxWidth: "100%"
-                    }}>{product?.municipality?.city?.nom ?? "---"} - {product?.municipality?.nom ?? "---"}</small>
+                    }}>
+                        {product?.municipality?.city?.nom ?? "---"} - {product?.municipality?.nom ?? "---"}
+                    </small>
                     <div className="d-flex justify-content-center py-1">
                         <div className="col badge badge-primary mr-2">
                             Categorie: {product?.category?.nom ?? "---"}
@@ -34,7 +37,8 @@ export function ProductCardV({product}) {
                             {product?.type ?? "---"}
                         </div>
                     </div>
-                    <Link to={`/publications/${product?.slug ?? ''}`} className="text-secondary d-flex 
+                    <Link to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`} 
+                    className="text-secondary d-flex 
                     pt-3 align-tiems-center justify-content-between">
                         <h6 className="m-0">{product?.prix ?? "---"} cfa</h6>
                         <Icons.ChevronRight />

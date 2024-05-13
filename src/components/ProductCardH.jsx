@@ -17,7 +17,8 @@ export function ProductCardH({product}) {
                 </Link>
                 <div className="col-7 px-0 pl-3">
                     <h5 className="card-title mb-0 text-secondary">
-                        <Link to={`/publications/${product?.slug ?? ''}`} className="text-secondary">
+                        <Link to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`} 
+                        className="text-secondary">
                             {product?.nom ?? "---"}
                         </Link>
                     </h5>
@@ -35,7 +36,8 @@ export function ProductCardH({product}) {
                             {product?.type ?? "---"}
                         </div>
                     </div>
-                    <Link to={`/publications/${product?.slug ?? ''}`} className="text-secondary d-flex 
+                    <Link to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`} 
+                    className="text-secondary d-flex 
                     pt-3 align-tiems-center justify-content-between">
                         <h6 className="m-0">{product?.prix ?? "---"} cfa</h6>
                         <Icons.ChevronRight />
