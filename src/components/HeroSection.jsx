@@ -50,7 +50,7 @@ export function HeroSection() {
             <div className="text-white mt-xl-5 py-5 text-center mx-auto">
                 {pathList.includes(pathname) && 
                         <>
-                        <h1 className="">Trouvez vore futur propriété</h1>
+                        <h1 className="">Trouvez votre futur propriété</h1>
                         <p>Recherchez parmis des centaines de maisons à acheter ou à louer</p>
                         <form className="form-inline mt-5 justify-content-center pb-4"
                         onSubmit={handleSearchSubmit}>

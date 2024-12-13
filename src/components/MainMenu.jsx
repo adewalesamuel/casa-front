@@ -75,7 +75,7 @@ export function MainMenu() {
                                     </span>
                                 </Link>
                                  <Link className="btn btn-sm bg-white rounded-pill ml-2 pr-3" 
-                                 to={'/mon-profil/nouvelle-publication'}>
+                                 to={'/mon-profil/mes-publications/create'}>
                                     <Icons.Plus className='mr-2' style={{
                                         width:'20px', 
                                         height:'20px', 
@@ -166,7 +166,7 @@ export function MainMenu() {
                                             </span>
                                         </Link>
                                          <Link className="btn bg-primary text-white rounded-pill ml-2 pr-3" 
-                                         to={'/mon-profil/nouvelle-publication'}>
+                                         to={'/mon-profil/mes-publications/create'}>
                                             <Icons.Plus className='mr-2' style={{
                                                 width:'20px', 
                                                 height:'20px', 

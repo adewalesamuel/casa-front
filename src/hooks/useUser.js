@@ -19,6 +19,7 @@ export const useUser = () => {
 	const [api_token, setApi_token] = useState('');
 	const [is_active, setIs_active] = useState('');
 	const [is_company, setIs_company] = useState('');
+	const [id_card_url, setId_card_url] = useState('');
 	
     const [errors, setErrors] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
@@ -51,7 +52,7 @@ export const useUser = () => {
 		api_token,
 		is_active,
 		is_company,
-		
+		id_card_url,
         };
 
         return Services.UserService.create(
@@ -74,7 +75,7 @@ export const useUser = () => {
 		api_token,
 		is_active,
 		is_company,
-		
+		id_card_url,
         };
 
         return Services.UserService.update(JSON.stringify(payload), signal);
@@ -99,6 +100,7 @@ export const useUser = () => {
 		setApi_token(user.api_token ?? '');
 		setIs_active(user.is_active ?? '');
 		setIs_company(user.is_company ?? '');
+		setId_card_url(user.id_card_url ?? '');
 		
     }
     const emptyUser = () => {
@@ -119,6 +121,7 @@ export const useUser = () => {
 		setApi_token('');
 		setIs_active('');
 		setIs_company('');
+		setId_card_url('');
 		
     }
 
@@ -140,7 +143,7 @@ export const useUser = () => {
 		api_token,
 		is_active,
 		is_company,
-		
+		id_card_url,
         errors,
         isDisabled,
         setNom,
@@ -159,7 +162,7 @@ export const useUser = () => {
 		setApi_token,
 		setIs_active,
 		setIs_company,
-		
+		setId_card_url,
         setId,
         setErrors,
         setIsDisabled,

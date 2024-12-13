@@ -1,5 +1,4 @@
 import { Components } from ".";
-import * as Icons from 'react-feather';
 
 export function Loader(props){
     return (

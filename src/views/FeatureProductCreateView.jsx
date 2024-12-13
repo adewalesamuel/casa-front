@@ -1,6 +1,6 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Services } from '../services';
 import { Components } from '../components';
 import { Hooks } from '../hooks';
@@ -9,11 +9,11 @@ export function FeatureProductCreateView() {
     let abortController = new AbortController();
 
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const useFeatureProduct = Hooks.useFeatureProduct();
 
     const [features, setFeatures] = useState([]);
-	const [products, setProducts] = useState([]);
 	
     const [errorMessages, setErrorMessages] = useState([]);
 
@@ -25,7 +25,7 @@ export function FeatureProductCreateView() {
         try {
             await useFeatureProduct.createFeatureProduct(abortController.signal);
 
-            navigate('/feature-products');
+            navigate(-1);
         } catch (error) {
             if ('message' in error) setErrorMessages([error.message]);
             if (!('messages' in error)) return;
@@ -40,17 +40,12 @@ export function FeatureProductCreateView() {
 
     const init = useCallback(async () => {
         useFeatureProduct.setIsDisabled(true);
+        useFeatureProduct.setProduct_id(id);
 
         try {
             const { features } = await Services.FeatureService
 			.getAll(abortController.signal);
 			setFeatures(features);
-
-			const { products } = await Services.ProductService
-			.getAll(abortController.signal);
-			setProducts(products);
-
-			
         } catch (error) {
             console.log(error);
         } finally {
@@ -64,15 +59,16 @@ export function FeatureProductCreateView() {
 
     return (
         <>
-            <h3>Créer FeatureProduct</h3>
+            <h4>Ajouter Charactéristique</h4>
 
             <Components.ErrorMessages>
                 {errorMessages}
             </Components.ErrorMessages>
-            <Components.FeatureProductForm useFeatureProduct={useFeatureProduct}
+            <Components.FeatureProductForm 
+            useFeatureProduct={useFeatureProduct}
             features={features} setFeatures={setFeatures}
-			products={products} setProducts={setProducts}
-			isDisabled={useFeatureProduct.isDisabled} handleFormSubmit={handleFormSubmit}/>
+			isDisabled={useFeatureProduct.isDisabled} 
+            handleFormSubmit={handleFormSubmit}/>
         </>
     )
 }

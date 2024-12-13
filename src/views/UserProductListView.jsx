@@ -1,21 +1,23 @@
 //'use client'
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate, useSearchParams, useParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Services } from '../services';
 import { Components } from '../components';
 import { Plus } from 'react-feather';
 
-
-export function FeatureProductListView() {
+export function UserProductListView() {
     let abortController = new AbortController();
 
-    const { FeatureProductService } = Services;
-
-    const {id} = useParams();
+    const { ProductService } = Services;
 
     const tableAttributes = {
+        '#': {},
         'nom': {},
-		'quantite': {},
+		'prix': {},
+		'type_paiement': {},
+		'type': {},
+		'category_id': {},
+		'municipality_id': {},
 		
     }
     const tableActions = ['edit', 'delete'];
@@ -23,44 +25,46 @@ export function FeatureProductListView() {
     const navigate = useNavigate();
     const [searchParams,] = useSearchParams();
 
-    const [feature_products, setFeatureProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [page, setPage] = useState(1);
-    const [pageLength] = useState(1);
+    const [pageLength, setPageLength] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
 
     const handleEditClick = (e, data) => {
         e.preventDefault();
-        navigate(`features/${data.id}/edit`);
+        navigate(`../mes-publications/${data.id}/edit`);
     }
-    const handleDeleteClick = async (e, feature_product) => {
+    const handleDeleteClick = async (e, product) => {
         e.preventDefault();
 
-        if (confirm('Voulez vous vraiment supprimer ce feature_product')) {
-            const feature_productsCopy = [...feature_products];
-            const index = feature_productsCopy.findIndex(feature_productItem => 
-                feature_productItem.id === feature_product.id);
+        if (confirm('Voulez vous vraiment supprimer ce product')) {
+            const productsCopy = [...products];
+            const index = productsCopy.findIndex(productItem => 
+                productItem.id === product.id);
 
-            feature_productsCopy.splice(index, 1);
-            setFeatureProducts(feature_productsCopy);
+            productsCopy.splice(index, 1);
+            setProducts(productsCopy);
 
-            await FeatureProductService.destroy(feature_product.id, 
+            await ProductService.destroy(product.id, 
                 abortController.signal);
         }
     }
 
     const init = useCallback(async () => {
         try {
-            const {features} = await FeatureProductService
-            .getByProductId(id, abortController.signal);
-            const featuresCopy = features.map(feature => {
-                return {
-                    id: feature.pivot.id,
-                    nom: feature.nom,
-                    quantite: feature.pivot.quantite
-                }
-            });
+            const {products} = await ProductService.getByUser(
+                {page: page}, abortController.signal);
 
-            setFeatureProducts(featuresCopy);
+            const productData = products.data.map((product, index) => {
+                return {
+                    '#': (products.data.length * (page - 1)) + (index + 1),
+                    ...product,
+                    category_id: product?.category?.nom ?? "",
+                    municipality_id: product?.municipality?.nom ?? "",
+                }
+            })
+            setProducts(productData);
+            setPageLength(products.last_page);
         } catch (error) {
             console.log(error);
         } finally {
@@ -85,16 +89,15 @@ export function FeatureProductListView() {
     return (
         <>
             <div className='d-flex justify-content-between align-items-center mb-2'>
-                <h4>Charactéristiques</h4>
-                <Link className='btn btn-info' to={`./features/create`}>
+                <h4>Mes publications</h4>
+                <Link className='btn btn-info' to='../mes-publications/create'>
                     <Plus /> Ajouter
                 </Link>
             </div>
-
             <Components.Loader isLoading={isLoading}>
                 <Components.Table controllers={{handleEditClick, handleDeleteClick}} 
                 tableAttributes={tableAttributes} tableActions={tableActions} 
-                tableData={feature_products}/>
+                tableData={products}/>
  
                 <Components.Pagination page={page} pageLength={pageLength}/>
             </Components.Loader>

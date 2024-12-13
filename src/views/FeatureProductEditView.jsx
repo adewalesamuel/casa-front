@@ -2,13 +2,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Components } from '../components';
 import { Hooks } from '../hooks';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Services } from '../services';
 
-export function FeatureProductShowView() {
+export function FeatureProductEditView() {
     let abortController = new AbortController();
 
-    const {id} = useParams();
+    const {featureId} = useParams();
+    const navigate = useNavigate();
 
     const useFeatureProduct = Hooks.useFeatureProduct();
 
@@ -24,7 +25,9 @@ export function FeatureProductShowView() {
         
         try {
             await useFeatureProduct.updateFeatureProduct(
-            	id, abortController.signal);
+            	featureId, abortController.signal);
+
+            navigate(-1);
         } catch (error) {
             if ('message' in error) setErrorMessages([error.message]);
             if (!('messages' in error)) return;
@@ -41,17 +44,12 @@ export function FeatureProductShowView() {
         useFeatureProduct.setIsDisabled(true);
 
         try {
-            await useFeatureProduct.getFeatureProduct(id, abortController.signal);
+            await useFeatureProduct.getFeatureProduct(
+                featureId, abortController.signal);
             
             const { features } = await Services.FeatureService
 			.getAll(abortController.signal);
 			setFeatures(features);
-
-			const { products } = await Services.ProductService
-			.getAll(abortController.signal);
-			setProducts(products);
-
-			
         } catch (error) {
             console.log(error);
         } finally{
@@ -65,7 +63,7 @@ export function FeatureProductShowView() {
 
     return (
         <>
-            <h3>Modifier FeatureProduct</h3>
+            <h4>Modifier Charactéristique</h4>
 
             <Components.ErrorMessages>
                 {errorMessages}

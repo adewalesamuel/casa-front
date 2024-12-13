@@ -2,14 +2,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Components } from '../components';
 import { Hooks } from '../hooks';
-import { useParams } from 'react-router-dom';
-import { Services } from '../services';
 import { Utils } from '../utils';
 
 export function UserEditView() {
     let abortController = new AbortController();
-
-    const {id} = useParams();
 
     const useUser = Hooks.useUser();
 
@@ -54,7 +50,7 @@ export function UserEditView() {
 
     return (
         <>
-            <h3 className='d-none d-md-block'>Modifier mes informations</h3>
+            <h4 className='d-none d-md-block'>Modifier mes informations</h4>
 
             <Components.ErrorMessages>
                 {errorMessages}

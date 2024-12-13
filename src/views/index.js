@@ -17,6 +17,11 @@ import { UserProfileView } from './UserProfileView';
 import { PrivateView } from './PrivateView';
 import { AboutUsView } from './AboutUsView';
 import { ContactView } from './ContactView';
+import { UserProductListView } from './UserProductListView';
+import { FeatureProductCreateView } from './FeatureProductCreateView'
+import { FeatureProductEditView } from './FeatureProductEditView'
+import { FeatureProductListView } from './FeatureProductListView'
+import { ProductEditView } from './ProductEditView';
 
 export const Views = {
 	UserListView,
@@ -37,5 +42,10 @@ export const Views = {
 	UserProfileView,
 	PrivateView,
 	AboutUsView,
-	ContactView
+	ContactView,
+	UserProductListView,
+	ProductEditView,
+	FeatureProductCreateView,
+	FeatureProductEditView,
+	FeatureProductListView,
 }

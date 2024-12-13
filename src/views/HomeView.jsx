@@ -10,8 +10,7 @@ import 'swiper/css';
 export function HomeView() {
     let abortController = new AbortController();
 
-    const {IM_products, setIM_products, 
-    IM_recentProducts, setIM_recentProducts} = useContext(MainContext);
+    const { IM_recentProducts, setIM_recentProducts} = useContext(MainContext);
 
     const [recentProducts, setRecentProducts] = useState([]);
     const [productList, setProductList] = useState([]);

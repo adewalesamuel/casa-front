@@ -29,6 +29,8 @@ import { RegisterForm } from './RegisterForm';
 import { ImageFileInput } from './ImageFileInput';
 import { MobileHeader } from './MobileHeader';
 import { MobileMenu } from './MobileMenu';
+import { DocFileInput } from './DocFileInput';
+import { Table } from './Table';
 
 export const Components = {
     PermissionForm,
@@ -61,5 +63,7 @@ export const Components = {
 	RegisterForm,
 	ImageFileInput,
 	MobileHeader,
-	MobileMenu
+	MobileMenu,
+	DocFileInput,
+	Table,
 }

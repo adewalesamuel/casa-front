@@ -14,17 +14,28 @@ export const useProduct = () => {
 	const [category_id, setCategory_id] = useState('');
 	const [municipality_id, setMunicipality_id] = useState('');
 	const [user_id, setUser_id] = useState('');
-	const [municipality, setMunicipality] = useState({});
-	const [category, setCategory] = useState({});
-	const [features, setFeatures] = useState([]);
 	const [created_at, setCreated_at] = useState('');
-	const [user, setUser] = useState({});
 
+	const [features, setFeatures] = useState([]);
+	const [user, setUser] = useState({});
+	const [category, setCategory] = useState({});
+	
     const [errors, setErrors] = useState([]);
     const [isDisabled, setIsDisabled] = useState(false);
 
-    const getProduct = (slug, signal) => {        
-        return Services.ProductService.getBySlug(slug, signal)
+    const handleImageChange = (display_img_url, img_url) => {
+		const display_img_url_listCopy = [...display_img_url_list];
+		const images_url_listCopy = [...display_img_url_list];
+
+		display_img_url_listCopy.push(display_img_url);
+		images_url_listCopy.push(img_url);
+
+		setDisplay_img_url_list(display_img_url_listCopy);
+		setImages_url_list(images_url_listCopy);
+    }
+
+    const getProduct = (productId, signal) => {        
+        return Services.ProductService.getBySlug(productId, signal)
         .then(response => {
             fillProduct(response.product);
             setIsDisabled(false);
@@ -69,7 +80,7 @@ export const useProduct = () => {
         };
 
         return Services.ProductService.update(
-			productId, JSON.stringify(payload), signal);
+        	productId, JSON.stringify(payload), signal);
     }
     const deleteProduct = (productId, signal) => {
         return Services.ProductService.destroy(productId, signal);
@@ -82,17 +93,16 @@ export const useProduct = () => {
 		setPrix(product.prix ?? '');
 		setType_paiement(product.type_paiement ?? '');
 		setType(product.type ?? '');
-		setDisplay_img_url_list(product.display_img_url_list ?? '');
-		setImages_url_list(product.images_url_list ?? '');
+		setDisplay_img_url_list(product.display_img_url_list ?? []);
+		setImages_url_list(product.images_url_list ?? []);
 		setCategory_id(product.category_id ?? '');
 		setMunicipality_id(product.municipality_id ?? '');
 		setUser_id(product.user_id ?? '');
 		setCreated_at(product.created_at ?? '');
-
-		setCategory(product.category ?? {});
-		setMunicipality(product.municipality ?? {});
+		
 		setFeatures(product.features ?? []);
 		setUser(product.user ?? {});
+		setCategory(product.category ?? {});
 		
     }
     const emptyProduct = () => {
@@ -103,18 +113,16 @@ export const useProduct = () => {
 		setPrix('');
 		setType_paiement('');
 		setType('');
-		setDisplay_img_url_list('');
-		setImages_url_list('');
+		setDisplay_img_url_list([]);
+		setImages_url_list([]);
 		setCategory_id('');
 		setMunicipality_id('');
 		setUser_id('');
 		setCreated_at('');
 
-		setCategory({});
-		setMunicipality({});
 		setFeatures([]);
 		setUser({});
-		
+		setCategory({});
     }
 
     return {
@@ -130,13 +138,11 @@ export const useProduct = () => {
 		category_id,
 		municipality_id,
 		user_id,
-		created_at,
-
-		municipality,
-		category,
 		features,
 		user,
-
+		category,
+		created_at,
+		
         errors,
         isDisabled,
         setNom,
@@ -150,6 +156,10 @@ export const useProduct = () => {
 		setCategory_id,
 		setMunicipality_id,
 		setUser_id,
+		setFeatures,
+		setUser,
+		setCategory,
+		setCreated_at,
 		
         setId,
         setErrors,
@@ -160,5 +170,7 @@ export const useProduct = () => {
         deleteProduct,
         fillProduct,
         emptyProduct,
+
+        handleImageChange
     };
 }
