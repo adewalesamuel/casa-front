@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as Icons from 'react-feather';
 import placeholderImg from '../assets/img/placeholder.webp';
+import { Utils } from '../utils';
 
 export function ProductCardH({product}) {
     const {pathname} = useLocation();
@@ -39,7 +40,7 @@ export function ProductCardH({product}) {
                     <Link to={`${isMobile ? '/mobile' : ''}/publications/${product?.slug ?? ''}`} 
                     className="text-secondary d-flex 
                     pt-3 align-tiems-center justify-content-between">
-                        <h6 className="m-0">{product?.prix ?? "---"} cfa</h6>
+                        <h6 className="m-0">{Utils.String.parsePrice(product?.prix) ?? "---"}</h6>
                         <Icons.ChevronRight />
                     </Link>
                 </div>

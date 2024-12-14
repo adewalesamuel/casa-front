@@ -24,27 +24,6 @@ export function UserProfileView() {
 		navigate('/', {replace:true});
 	}
 
-	// const onSuccessCallback = (data) => console.log(data);
-	// const onErrorCallback = (error) => console.log(error);
-
-	// const handlePaymentClick = (e) => {
-	// 	e.preventDefault();
-
-	// 	try {
-	// 		Utils.Payment.checkout(
-	// 			{
-	// 				amount: 100,
-	// 				description: 'Test payment',
-	// 			},
-	// 			onSuccessCallback,
-	// 			onErrorCallback
-	// 		)
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-
-	// }
-
 	return (
 			<section id="profile">
 				<div className="row">
@@ -56,12 +35,22 @@ export function UserProfileView() {
 									Mon profil <Icons.ChevronRight />
 								</NavLink>
 							</li>
-							<li className="list-group-item p-0">
-								<NavLink to='/mon-profil/mes-publications' className={({isActive}) => isActive ? 
-								`${defaultClasses + activeClasses}` : defaultClasses}>
-									Mes publications <Icons.ChevronRight />
-								</NavLink>
-							</li>
+							{Utils.Auth.getUser().type === 'vendeur' &&
+								<>
+									<li className="list-group-item p-0">
+										<NavLink to='/mon-profil/mon-compte' className={({isActive}) => isActive ? 
+										`${defaultClasses + activeClasses}` : defaultClasses}>
+											Mon compte <Icons.ChevronRight />
+										</NavLink>
+									</li>
+									<li className="list-group-item p-0">
+										<NavLink to='/mon-profil/mes-publications' className={({isActive}) => isActive ? 
+										`${defaultClasses + activeClasses}` : defaultClasses}>
+											Mes publications <Icons.ChevronRight />
+										</NavLink>
+									</li>
+								</>
+							}
 							<li className="list-group-item p-0">
 								<span className={`${defaultClasses} text-danger`} onClick={handleLogout}>
 									Deconnexion <Icons.LogOut />
@@ -72,6 +61,7 @@ export function UserProfileView() {
 					<div className='col-lg-8 col-12'>
 						<Routes>
 							<Route path='modifier' element={<Views.UserEditView />}/>
+							<Route path='mon-compte' element={<Views.TransactionListView />}/>
 							<Route path='mes-publications' element={<Views.UserProductListView />}/>
 							<Route path='mes-publications/create' element={<Views.ProductCreateView />}/>
 							<Route path='mes-publications/:id/edit/*' element={<Views.ProductEditView />}/>

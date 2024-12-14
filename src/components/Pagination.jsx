@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "react-feather";
 import { Link } from "react-router-dom";
 
 export function Pagination(props){
@@ -8,7 +9,7 @@ export function Pagination(props){
                 <li className="page-item">
                     <Link className="page-link" to={`?page=${props.page > 1 ? 
                         props.page - 1 : props.page}`}>
-                        <i className="fa fa-angle-left"></i>
+                        <ChevronLeft size={20} />
                     </Link>
                 </li>
                 {Array(props.pageLength).fill(0).map((item, index) => {
@@ -23,7 +24,7 @@ export function Pagination(props){
                 <li className="page-item">
                     <Link className="page-link" to={`?page=${props.page < props.pageLength ? 
                         props.page + 1 : props.page}`}>
-                        <i className="fa fa-angle-right"></i>
+                        <ChevronRight size={20} />
                     </Link>
                 </li>
             </ul>

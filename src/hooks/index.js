@@ -13,6 +13,10 @@ import { useComment } from './useComment';
 import { useFavorite } from './useFavorite';
 import { usePromoCode } from './usePromoCode';
 import { useFile } from './useFile';
+import { useAccount } from './useAccount';
+import { useTransaction } from './useTransaction';
+import { useView } from './useView';
+import { useError } from './useError';
 
 export const Hooks = {
     usePermission,
@@ -30,5 +34,8 @@ export const Hooks = {
 	useFavorite,
 	usePromoCode,
 	useFile,
-	
+	useAccount,
+	useTransaction,
+	useView,
+	useError,
 }

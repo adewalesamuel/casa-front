@@ -39,9 +39,7 @@ export function FeatureCreateView() {
     const init = useCallback(async () => {
         useFeature.setIsDisabled(true);
 
-        try {
-            
-        } catch (error) {
+        try { /* empty */ } catch (error) {
             console.log(error);
         } finally {
             useFeature.setIsDisabled(false);

@@ -12,7 +12,6 @@ export function CategoryListView() {
     const { CategoryService, ProductService } = Services;
     
     const {IM_categories, setIM_categories} = useContext(MainContext);
-
     const [searchParam] = useSearchParams();
 
     const [categories, setCategories] = useState([]);
@@ -114,7 +113,7 @@ export function CategoryListView() {
                     })}
                 </ul>
                 <Components.HasMore isLoading={isLoading} page={page} 
-                    setPage={setPage} hasMore={hasMore}/>
+                setPage={setPage} hasMore={hasMore}/>
             </div>
         </section>
     )

@@ -22,6 +22,8 @@ import { FeatureProductCreateView } from './FeatureProductCreateView'
 import { FeatureProductEditView } from './FeatureProductEditView'
 import { FeatureProductListView } from './FeatureProductListView'
 import { ProductEditView } from './ProductEditView';
+import { TransactionListView } from './TransactionListView';
+import { ViewListView } from './ViewListView';
 
 export const Views = {
 	UserListView,
@@ -48,4 +50,6 @@ export const Views = {
 	FeatureProductCreateView,
 	FeatureProductEditView,
 	FeatureProductListView,
+	TransactionListView,
+	ViewListView,
 }

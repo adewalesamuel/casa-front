@@ -14,10 +14,8 @@ export function UserProductListView() {
         '#': {},
         'nom': {},
 		'prix': {},
-		'type_paiement': {},
 		'type': {},
 		'category_id': {},
-		'municipality_id': {},
 		
     }
     const tableActions = ['edit', 'delete'];
@@ -59,6 +57,7 @@ export function UserProductListView() {
                 return {
                     '#': (products.data.length * (page - 1)) + (index + 1),
                     ...product,
+                    prix: `${product.prix} Fcfa`,
                     category_id: product?.category?.nom ?? "",
                     municipality_id: product?.municipality?.nom ?? "",
                 }

@@ -23,13 +23,12 @@ export function CategoryEditView() {
         
         try {
             await useCategory.updateCategory(
-            	id, abortController.signal);
+                id, abortController.signal);
         } catch (error) {
             if ('message' in error) setErrorMessages([error.message]);
             if (!('messages' in error)) return;
 
             const messages = await error.messages;
-
             setErrorMessages(messages);
         } finally {
             useCategory.setIsDisabled(false);
@@ -45,8 +44,6 @@ export function CategoryEditView() {
             const { categorys } = await Services.CategoryService
 			.getAll(abortController.signal);
 			setCategorys(categorys);
-
-			
         } catch (error) {
             console.log(error);
         } finally{

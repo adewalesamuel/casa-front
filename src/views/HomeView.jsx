@@ -27,7 +27,6 @@ export function HomeView() {
             .loadProductList(page, null, abortController.signal);
 
             if (products.data.length === 0) setHasMore(false);
-
             if (page == 2 && products.data.length === 0) {
                 setHasMore(false)
                 setProductList([...recentProducts]);

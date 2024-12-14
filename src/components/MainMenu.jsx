@@ -7,14 +7,15 @@ import { Utils } from "../utils";
 export function MainMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const {pathname} = useLocation();
-
+    const user = Utils.Auth.getUser();
+    console.log(user);
     useEffect(() => {
         setIsMenuOpen(false);
     }, [pathname])
 
 	return (
             <>
-    			<nav className="navbar navbar-expand-lg navbar-light">
+                <nav className="navbar navbar-expand-lg navbar-light">
                     <Link className="navbar-brand" to='/'>
                         <img src={logo} className="site-logo" width={60} /> 
                     </Link>
@@ -71,16 +72,18 @@ export function MainMenu() {
                                         height:'20px', 
                                     }}/>
                                     <span className="d-inline-block">
-                                        {Utils.Auth.getUser()?.nom}
+                                        {user?.nom}
                                     </span>
                                 </Link>
-                                 <Link className="btn btn-sm bg-white rounded-pill ml-2 pr-3" 
-                                 to={'/mon-profil/mes-publications/create'}>
-                                    <Icons.Plus className='mr-2' style={{
-                                        width:'20px', 
-                                        height:'20px', 
-                                    }}/> Publication
-                                </Link>
+                                {user.type === 'vendeur' && 
+                                    <Link className="btn btn-sm bg-white rounded-pill ml-2 pr-3" 
+                                    to={'/mon-profil/mes-publications/create'}>
+                                        <Icons.Plus className='mr-2' style={{
+                                            width:'20px', 
+                                            height:'20px', 
+                                        }}/> Publication
+                                    </Link>
+                                }
                             </>
                         }
                     </div>
@@ -162,16 +165,18 @@ export function MainMenu() {
                                                 height:'20px', 
                                             }}/>
                                             <span className="d-inline-block">
-                                                {Utils.Auth.getUser()?.nom}
+                                                {user?.nom}
                                             </span>
                                         </Link>
-                                         <Link className="btn bg-primary text-white rounded-pill ml-2 pr-3" 
-                                         to={'/mon-profil/mes-publications/create'}>
-                                            <Icons.Plus className='mr-2' style={{
-                                                width:'20px', 
-                                                height:'20px', 
-                                            }}/> Publication
-                                        </Link>
+                                        {user.type === 'vendeur' &&
+                                            <Link className="btn bg-primary text-white rounded-pill ml-2 pr-3" 
+                                            to={'/mon-profil/mes-publications/create'}>
+                                                <Icons.Plus className='mr-2' style={{
+                                                    width:'20px', 
+                                                    height:'20px', 
+                                                }}/> Publication
+                                            </Link>
+                                        }
                                     </>
                                 }
                             </div>

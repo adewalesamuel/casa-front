@@ -14,6 +14,9 @@ import { FavoriteService } from './FavoriteService';
 import { PromoCodeService } from './PromoCodeService';
 import { AuthService } from './AuthService';
 import { FileService } from './FileService';
+import { AccountService } from './AccountService';
+import { TransactionService } from './TransactionService';
+import { ViewService } from './ViewService';
 
 export const Services = {
     PermissionService,
@@ -31,6 +34,9 @@ export const Services = {
 	FavoriteService,
 	PromoCodeService,
 	AuthService,
-	FileService
+	FileService,
+	AccountService,
+	TransactionService,
+	ViewService,
 	
 }

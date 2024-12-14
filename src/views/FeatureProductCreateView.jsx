@@ -65,9 +65,8 @@ export function FeatureProductCreateView() {
                 {errorMessages}
             </Components.ErrorMessages>
             <Components.FeatureProductForm 
-            useFeatureProduct={useFeatureProduct}
-            features={features} setFeatures={setFeatures}
-			isDisabled={useFeatureProduct.isDisabled} 
+            useFeatureProduct={useFeatureProduct} features={features} 
+            setFeatures={setFeatures} isDisabled={useFeatureProduct.isDisabled} 
             handleFormSubmit={handleFormSubmit}/>
         </>
     )

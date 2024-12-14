@@ -1,6 +1,9 @@
 import * as Icons from 'react-feather';
+import { Utils } from '../utils';
 
 export function Table(props) {
+    const {_} = Utils.String;
+
     const ACTIONS = {
         EDIT: 'edit',
         READ: 'read',
@@ -33,18 +36,17 @@ export function Table(props) {
     const renderTableHeads = () => {
         const tableHeads = Object.keys(tableAttributes)
         .map((key, index) => {
-            const regEx = new RegExp('[-_]', 'gi')
             return (
                 <th className={`${tableAttributes[key].thClassName ?? ""} 
                 whitespace-no-wrap`}
                 key={index}>
-                    {key.replace(regEx, '').toUpperCase()}
+                    {_(key)}
                 </th>
             )
         })
 
         tableHeads.push(<th key={9999} className="text-center 
-        whitespace-no-wrap">ACTIONS</th>);
+        whitespace-no-wrap">Actions</th>);
 
         return tableHeads;
     }

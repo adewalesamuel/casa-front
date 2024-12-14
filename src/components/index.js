@@ -31,6 +31,9 @@ import { MobileHeader } from './MobileHeader';
 import { MobileMenu } from './MobileMenu';
 import { DocFileInput } from './DocFileInput';
 import { Table } from './Table';
+import { AccountForm } from './forms/AccountForm';
+import { Modal } from './Modal';
+import { TransactionForm } from './TransactionForm';
 
 export const Components = {
     PermissionForm,
@@ -66,4 +69,7 @@ export const Components = {
 	MobileMenu,
 	DocFileInput,
 	Table,
+	AccountForm,
+	Modal,
+	TransactionForm,
 }

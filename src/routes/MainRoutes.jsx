@@ -13,10 +13,10 @@ export function MainRoutes() {
 	return (
 			<MainContext.Provider value={{
 				IM_categories,
-				setIM_categories,
 				IM_products,
-				setIM_products,
 				IM_recentProducts,
+				setIM_categories,
+				setIM_products,
 				setIM_recentProducts
 			}}>
 				<Layouts.MainLayout>

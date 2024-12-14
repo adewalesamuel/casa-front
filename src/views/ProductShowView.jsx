@@ -85,7 +85,7 @@ export function ProductShowView() {
                                 </div>
                                 <div className='col-4 mt-0'>
                                     <h5 className="m-0 text-primary text-right">
-                                        {useProduct?.prix ?? "---"} cfa
+                                        {Utils.String.parsePrice(useProduct?.prix) ?? "---"}
                                     </h5>
                                 </div>
                             </div>

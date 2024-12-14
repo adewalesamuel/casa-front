@@ -88,7 +88,7 @@ export function UserForm(props) {
                     </div>
                 </div>
 				
-                <div className='col-12 text-right mt-5'>
+                <div className='col-12 text-right mt-3'>
                     <button disabled={props.isDisabled ?? false} type='submit' 
                     className='btn btn-primary'>
                         {props.isDisabled ? 'Chargement...' :  'Enregistrer'}

@@ -66,5 +66,6 @@
     "type": "Type",
     "type_paiement": "Type de paiement",
     "user_id": "L'utilisateur",
-    "id_card_url": "Pièce d'identité"
+    "id_card_url": "Pièce d'identité",
+    "created_at": "Date de création"
 }
