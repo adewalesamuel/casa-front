@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Hooks } from "../hooks";
 import { Services } from "../services";
 import { Utils } from "../utils";
+import { CONSTS } from "../constants";
 
 export function RegisterView() {
     const abortController = new AbortController();
@@ -38,7 +39,10 @@ export function RegisterView() {
             Utils.Auth.setSessionToken(token)
             Utils.Auth.setUser(user);
 
-            navigate('/');
+            const nextRoute = useUser.type === CONSTS.USER.TYPES.VENDEUR ? 
+            '/mon-profil/mon-compte' : '/';
+
+            navigate(nextRoute);
         } catch (error) {
             if ('messages' in error) setErrorMessages(await error.messages);
             if ('message' in error) setErrorMessages([error.message])

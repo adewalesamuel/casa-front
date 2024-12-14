@@ -1,14 +1,19 @@
-import { NavLink, Routes, Route } from 'react-router-dom';
+import { NavLink, Routes, Route, useLocation } from 'react-router-dom';
 import * as Icons from 'react-feather';
 import { Views } from '.';
 import { Utils } from '../utils';
 import { Services } from '../services';
 import { useNavigate } from 'react-router-dom';
+import { CONSTS } from '../constants';
+import { useState } from 'react';
 
 export function UserProfileView() {
 	const abortController = new AbortController();
+    const {pathname} = useLocation();
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
+
+	const [isMobile,] = useState(pathname.startsWith('/mobile'));
 
 	const defaultClasses = "d-flex justify-content-between align-items-center p-3 btn rounded-0";
 	const activeClasses = " bg-primary text-white";
@@ -30,21 +35,22 @@ export function UserProfileView() {
 					<div className="col-md-4 col-12 mb-4">
 						<ul className="list-group">
 							<li className="list-group-item p-0">
-								<NavLink to='/mon-profil/modifier' className={({isActive}) => isActive ? 
+								<NavLink to={`${isMobile ? '/mobile' : ''}/mon-profil/modifier`} 
+								className={({isActive}) => isActive ? 
 								`${defaultClasses + activeClasses}` : defaultClasses}>
 									Mon profil <Icons.ChevronRight />
 								</NavLink>
 							</li>
-							{Utils.Auth.getUser().type === 'vendeur' &&
+							{Utils.Auth.getUser().type === CONSTS.USER.TYPES.VENDEUR &&
 								<>
 									<li className="list-group-item p-0">
-										<NavLink to='/mon-profil/mon-compte' className={({isActive}) => isActive ? 
+										<NavLink to={`${isMobile ? '/mobile' : ''}/mon-profil/mon-compte`} className={({isActive}) => isActive ? 
 										`${defaultClasses + activeClasses}` : defaultClasses}>
 											Mon compte <Icons.ChevronRight />
 										</NavLink>
 									</li>
 									<li className="list-group-item p-0">
-										<NavLink to='/mon-profil/mes-publications' className={({isActive}) => isActive ? 
+										<NavLink to={`${isMobile ? '/mobile' : ''}/mon-profil/mes-publications`} className={({isActive}) => isActive ? 
 										`${defaultClasses + activeClasses}` : defaultClasses}>
 											Mes publications <Icons.ChevronRight />
 										</NavLink>

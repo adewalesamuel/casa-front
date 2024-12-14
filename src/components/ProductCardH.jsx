@@ -6,7 +6,6 @@ import { Utils } from '../utils';
 
 export function ProductCardH({product}) {
     const {pathname} = useLocation();
-
     const [isMobile,] = useState(pathname.startsWith('/mobile'));
     
 	return (

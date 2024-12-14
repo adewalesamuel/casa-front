@@ -33,7 +33,7 @@ export function ProductForm(props) {
         <form className="bg-white rounded" 
         onSubmit={props.handleFormSubmit ?? null}>
             <div className='row'>
-                <div className='col'>
+                <div className='col-12 col-md-6'>
                     <div className='col-12 mb-3'>
                         <div className="row justify-content-start mb-2">
                             {props.useProduct.images_url_list.map((image_url, index) => {
@@ -82,7 +82,7 @@ export function ProductForm(props) {
                         </div>
                     </div>
                 </div>
-                <div className='col'>
+                <div className='col-12 col-md-6'>
                     <div className='col-12'>
                         <div className='form-group'>
                             <label htmlFor='prix'>{_('prix')}</label>

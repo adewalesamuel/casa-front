@@ -1,3 +1,5 @@
+import { CONSTS } from "../constants";
+
 export function RegisterForm(props){
     return (
         <form onSubmit={props.handleFormSubmit ?? null}>
@@ -27,8 +29,13 @@ export function RegisterForm(props){
                         value={props.useUser.type ?? ''} disabled={props.isDisabled} 
                         onChange={ e => props.useUser.setType(e.target.value) ?? null}>
                             <option hidden>Choisissez une option</option>
-                            <option value='client'>Acheteur</option>
-                            <option value='vendeur'>Vendeur</option>
+                            {Object.values(CONSTS.USER.TYPES).map((type, index) => {
+                                return (
+                                    <option value={type} key={index}>
+                                        {type}
+                                    </option>
+                                )
+                            })}
                         </select>
                     </div>
                 </div>

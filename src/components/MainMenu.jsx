@@ -3,12 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import * as Icons from 'react-feather';
 import logo from '../assets/img/logo.jpeg';
 import { Utils } from "../utils";
+import { CONSTS } from "../constants";
 	
 export function MainMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const {pathname} = useLocation();
     const user = Utils.Auth.getUser();
-    console.log(user);
+
     useEffect(() => {
         setIsMenuOpen(false);
     }, [pathname])
@@ -75,7 +76,7 @@ export function MainMenu() {
                                         {user?.nom}
                                     </span>
                                 </Link>
-                                {user.type === 'vendeur' && 
+                                {user.type === CONSTS.USER.TYPES.VENDEUR && 
                                     <Link className="btn btn-sm bg-white rounded-pill ml-2 pr-3" 
                                     to={'/mon-profil/mes-publications/create'}>
                                         <Icons.Plus className='mr-2' style={{
@@ -168,7 +169,7 @@ export function MainMenu() {
                                                 {user?.nom}
                                             </span>
                                         </Link>
-                                        {user.type === 'vendeur' &&
+                                        {user.type === CONSTS.USER.TYPES.VENDEUR &&
                                             <Link className="btn bg-primary text-white rounded-pill ml-2 pr-3" 
                                             to={'/mon-profil/mes-publications/create'}>
                                                 <Icons.Plus className='mr-2' style={{
