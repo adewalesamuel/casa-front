@@ -18,6 +18,8 @@ function App() {
             <Routes>
                 <Route path='/connexion' element={<Views.LoginView />} />
                 <Route path='/inscription' element={<Views.RegisterView />} />
+                <Route path='/mobile/connexion' element={<Views.LoginView />} />
+				<Route path='/mobile/inscription' element={<Views.RegisterView />} />
                 <Route path='/mobile/*' element={<AppRoutes.MobileRoutes />} />
                 <Route path='*' element={<AppRoutes.MainRoutes />}/>
             </Routes>

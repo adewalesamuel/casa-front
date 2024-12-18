@@ -26,7 +26,7 @@ export function UserProfileView() {
 		Services.AuthService.logout('', abortController.signal);
 
 		Utils.Auth.removeSessionToken();
-		navigate('/', {replace:true});
+		navigate(`/${isMobile ? 'mobile' : ''}`, {replace:true});
 	}
 
 	return (

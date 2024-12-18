@@ -3,7 +3,7 @@ import { Components } from "../components";
 import { Layouts } from "../layouts";
 
 import logo from '../assets/img/logo.jpeg';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Hooks } from "../hooks";
 import { Services } from "../services";
 import { Utils } from "../utils";
@@ -12,9 +12,12 @@ import { CONSTS } from "../constants";
 export function RegisterView() {
     const abortController = new AbortController();
 
-    const navigate = useNavigate();
-    const useUser = Hooks.useUser();
+    const {pathname} = useLocation();
+	const navigate = useNavigate();
 
+    const useUser = Hooks.useUser();
+    
+	const [isMobile,] = useState(pathname.startsWith('/mobile'));
     const [errorMessages, setErrorMessages] = useState([]);
 
     const handleRegisterSubmit = async e => {
@@ -42,7 +45,7 @@ export function RegisterView() {
             const nextRoute = useUser.type === CONSTS.USER.TYPES.VENDEUR ? 
             '/mon-profil/mon-compte' : '/';
 
-            navigate(nextRoute);
+            navigate(`${isMobile ? `/mobile${nextRoute}`: nextRoute}`);
         } catch (error) {
             if ('messages' in error) setErrorMessages(await error.messages);
             if ('message' in error) setErrorMessages([error.message])
@@ -67,7 +70,7 @@ export function RegisterView() {
 
                     <div className="d-flex justify-content-between mt-3 align-items-center">
                         <small className="">Vous avez déjà un compte ?</small>
-                        <Link to={'/connexion'} className="text-primary">
+                        <Link to={`${isMobile ? '/mobile': ''}/connexion`} className="text-primary">
                             <small>Connectez-vous</small>
                         </Link>
                     </div>

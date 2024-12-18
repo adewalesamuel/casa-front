@@ -3,15 +3,17 @@ import { Components } from "../components";
 import { Layouts } from "../layouts";
 
 import logo from '../assets/img/logo.jpeg';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Services } from "../services";
 import { Utils } from "../utils";
 
 export function LoginView() {
     const abortController = new AbortController();
 
+    const {pathname} = useLocation();
     const navigate = useNavigate();
 
+	const [isMobile,] = useState(pathname.startsWith('/mobile'));
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isDisabled, setIsDisabled] = useState(false);
@@ -33,7 +35,7 @@ export function LoginView() {
             Utils.Auth.setSessionToken(token)
             Utils.Auth.setUser(user);
 
-            navigate('/');
+            navigate(`/${isMobile ? 'mobile': ''}`);
         } catch (error) {
             if ('messages' in error) setErrorMessages(await error.messages);
             if ('message' in error) setErrorMessages([error.message])
@@ -59,7 +61,7 @@ export function LoginView() {
 
                     <div className="d-flex justify-content-between mt-3 align-items-center">
                         <small className="">Vous n&apos;avez pas de compte ?</small>
-                        <Link to={'/inscription'} className="text-primary">
+                        <Link to={`${isMobile ? '/mobile': ''}/inscription`} className="text-primary">
                             <small>Inscrivez-vous</small>
                         </Link>
                     </div>
